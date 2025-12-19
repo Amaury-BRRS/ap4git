@@ -3,9 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+// route pour afficher le template.blade.php par défaut 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('template');
+})->name("template"); 
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -18,3 +19,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
