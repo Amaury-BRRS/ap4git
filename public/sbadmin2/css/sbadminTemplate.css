@@ -1,0 +1,29 @@
+/* charte graphique couleur : 
+
+turquoise principale : #00a6a9, 
+orange principal : #f18628, 
+
+jaune secondaire : #ffe596, 
+jaune secondaire foncé :  #f1c402, 
+
+bleu secondaire : #007e97
+bleu secondaire foncé : 001d3d
+ */
+
+/* gros bloc sur le coté gauche du site */
+#accordionSidebar{
+    background: linear-gradient(180deg, #00a6a9, #007e97) !important;
+}
+
+/*  bouton loupe de la barre de recherche */
+.btn-primary{
+    background: linear-gradient(180deg, #00a6a9, #007e97) !important;
+}
+
+#sidebarToggleTop{
+ background: linear-gradient(180deg, #00a6a9, #007e97) !important;   
+}
+
+.fa-bars{
+ color:white !important;   
+}

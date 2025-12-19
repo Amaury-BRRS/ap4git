@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     {{-- stack sert à envoyer tel champ vers une page qui appellera  @push('name') --}}
-    <title> @stack('title', 'AP4') </title>
+    <title> @stack('title', 'Excellence Pro Franche-Comté') </title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('/') }}sbadmin2/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('/') }}sbadmin2/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ asset('/') }}sbadmin2/css/sbadminTemplate.css" rel="stylesheet">
 
     {{-- envoie des styles --}}
     @stack('styles')
