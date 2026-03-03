@@ -19,4 +19,5 @@ class IsAdmin
         return $next($request);
     }
      return redirect()->route('A MODIFIER POUR METTRE PAGE DE LOGIN OU PAGE ACCUEIL !!! ')->with('error', "Vous n'avez pas accès à cette section."); 
+    }
 }
