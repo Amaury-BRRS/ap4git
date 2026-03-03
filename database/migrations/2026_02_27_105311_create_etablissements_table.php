@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('ville');
             $table->string('email')->unique();
             $table->string('telephone');
-            $table->foreignId('formation_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

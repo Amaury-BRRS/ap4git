@@ -11,10 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('formations', function (Blueprint $table) {
-            $table->id();
-            $table->string('libelle');
-            $table->timestamps();
+        Schema::table('etablissements', function (Blueprint $table) {
+            $table->foreignId('formation_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -23,6 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('formations');
+        Schema::table('etablissements', function (Blueprint $table) {
+            $table->dropForeign(['formation_id']);
+            $table->dropColumn('formation_id');
+        });
     }
 };
