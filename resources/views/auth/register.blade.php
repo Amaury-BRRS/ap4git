@@ -54,8 +54,28 @@
                                         </div>
                                     @endif
 
-                                    <form class="user" method="POST" action="{{ route('login') }}">
+                                    <form class="user" method="POST" action="{{ route('register') }}">
                                         @csrf
+
+                                        <!-- Nom -->
+                                        <div class="form-group">
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                value="{{ old('name') }}"
+                                                class="form-control form-control-user @error('name') is-invalid @enderror"
+                                                id="name"
+                                                placeholder="Nom"
+                                                required
+                                                autofocus
+                                                autocomplete="name"
+                                            >
+                                            @error('name')
+                                                <div class="invalid-feedback d-block">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
 
                                         <!-- Email -->
                                         <div class="form-group">
@@ -67,7 +87,7 @@
                                                 id="email"
                                                 placeholder="Adresse e‑mail"
                                                 required
-                                                autofocus
+                                               
                                                 autocomplete="username"
                                             >
                                             @error('email')
@@ -86,7 +106,7 @@
                                                 id="password"
                                                 placeholder="Mot de passe"
                                                 required
-                                                autocomplete="current-password"
+                                                autocomplete="new-password"
                                             >
                                             @error('password')
                                                 <div class="invalid-feedback d-block">
