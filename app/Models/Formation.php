@@ -9,4 +9,13 @@ class Formation extends Model
 {
     /** @use HasFactory<\Database\Factories\FormationFactory> */
     use HasFactory;
+
+    public function etablissement()
+    {
+        return $this->belongsToMany(Etablissement::class);
+    }
+
+    protected $fillable = [
+        'nom',
+    ];
 }

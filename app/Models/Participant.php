@@ -9,4 +9,15 @@ class Participant extends Model
 {
     /** @use HasFactory<\Database\Factories\ParticipantFactory> */
     use HasFactory;
+
+    public function contrat()
+    {
+        return $this->belongsToMany(Contrat::class);
+    }
+
+    protected $fillable = [
+        'nom',
+        'prenom',
+        'type_participant',
+    ];
 }
