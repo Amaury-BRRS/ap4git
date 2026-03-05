@@ -10,7 +10,7 @@ class Echange extends Model
 {
     /** @use HasFactory<\Database\Factories\EchangeFactory> */
     use HasFactory;
-
+  
     protected $fillable = [
         'type',
         'date_de_contact',
