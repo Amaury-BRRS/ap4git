@@ -49,4 +49,9 @@ class User extends Authenticatable
             'est_super_admin' => 'boolean',
         ];
     }
+
+    public function echanges()
+    {
+        return $this->hasMany(Echange::class);
+    }
 }
