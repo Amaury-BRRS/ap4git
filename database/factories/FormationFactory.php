@@ -17,7 +17,7 @@ class FormationFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'libelle' => $this->faker->JobTitle(),
         ];
     }
 }

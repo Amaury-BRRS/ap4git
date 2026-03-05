@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'est_admin',
+        'est_super_admin',
     ];
 
     /**
@@ -43,6 +45,13 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'est_admin' => 'boolean',
+            'est_super_admin' => 'boolean',
         ];
+    }
+
+    public function echanges()
+    {
+        return $this->hasMany(Echange::class);
     }
 }
