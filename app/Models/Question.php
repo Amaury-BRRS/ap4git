@@ -9,4 +9,18 @@ class Question extends Model
 {
     /** @use HasFactory<\Database\Factories\QuestionFactory> */
     use HasFactory;
+
+    public function choix(){
+        return $this->HasMany(Choix::class); 
+    }
+
+    public function enquete(){
+        return $this->BelongsTo(Enquete::class); 
+    }
+
+    protected $fillable = [
+        'type',
+        'intitule',
+        'ordre',
+    ];
 }

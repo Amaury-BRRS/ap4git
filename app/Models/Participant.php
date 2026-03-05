@@ -20,4 +20,8 @@ class Participant extends Model
         'prenom',
         'type_participant',
     ];
+
+    public function enquete(){
+        return $this->HasMany(enquete::class); 
+    }
 }
