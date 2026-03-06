@@ -4,24 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Formation;
 
 class Etablissement extends Model
 {
-    /** @use HasFactory<\Database\Factories\EtablissementFactory> */
+    /** @use HasFactory<\Database\Factories\QuestionFactory> */
     use HasFactory;
-
-    public function formation()
-    {
-        return $this->hasMany(Formation::class);
-    }
-
-    protected $fillable = [
-        'nom',
-        'adresse',
-        'ville',
-        'code_postal',
-        'email',
-        'telephone',
-    ];
 }
