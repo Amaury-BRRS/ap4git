@@ -16,6 +16,6 @@ class Formation extends Model
     }
 
     protected $fillable = [
-        'nom',
+        'libelle',
     ];
 }
