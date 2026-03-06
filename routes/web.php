@@ -3,10 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// route pour afficher le template.blade.php par défaut 
+// route pour afficher la page d'accueil
 Route::get('/', function () {
-    return view('template');
-})->name("template"); 
+    return view('accueil');
+})->name("accueil");
 
 Route::get('/dashboard', function () {
     return view('dashboard');
