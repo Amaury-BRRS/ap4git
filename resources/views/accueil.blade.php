@@ -35,7 +35,7 @@
                         <div class="col-lg-6">
                             <div class="p-5 d-flex flex-column h-100">
                                 <div class="mb-4">
-                                    <h1 class="h3 text-gray-900 mb-3">Bienvenue sur AP4</h1>
+                                    <h1 class="h3 text-gray-900 mb-3">Bienvenue sur Excellence Pro Franche-Comté</h1>
                                     <p class="text-muted mb-0">
                                         Plateforme d’enquêtes et de formulaires pour Excellence Pro Franche-Comté.
                                     </p>
