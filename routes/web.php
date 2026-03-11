@@ -8,9 +8,10 @@ Route::get('/', function () {
     return view('accueil');
 })->name("accueil");
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/template', function () {
+    return view('template');
+})->middleware(['auth', 'verified'])->name('template');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -18,6 +19,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
+    
 require __DIR__.'/auth.php';
 
