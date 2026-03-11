@@ -17,7 +17,9 @@ class ParticipantFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nom' => $this->faker->lastName(),
+            'prenom' => $this->faker->firstName(),
+            'type_participant' => $this->faker->randomElement(['ancien_etudiant', 'ancien_enseignant', 'ancien_tuteur']),
         ];
     }
 }
