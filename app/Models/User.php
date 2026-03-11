@@ -49,6 +49,30 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Vérifier si l'utilisateur est un admin
+     */
+    public function isAdmin(): bool
+    {
+        return $this->type_user === 'admin' || $this->type_user === 'superadmin';
+    }
+
+    /**
+     * Vérifier si l'utilisateur est un super admin
+     */
+    public function isSuperAdmin(): bool
+    {
+        return $this->type_user === 'superadmin';
+    }
+
+    /**
+     * Vérifier si l'utilisateur est un utilisateur normal
+     */
+    public function isUser(): bool
+    {
+        return $this->type_user === 'user';
+    }
+
     public function echanges()
     {
         return $this->hasMany(Echange::class);
