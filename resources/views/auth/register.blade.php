@@ -30,8 +30,9 @@
                         <div class="row">
                             <!-- Colonne image / déco -->
                             <div class="col-lg-6 d-none d-lg-block"
-                                 style="background: linear-gradient(135deg, rgba(78,115,223,.9), rgba(34,74,190,.9));">
-                            </div>
+                            style="background: linear-gradient(135deg,rgba(241, 134, 40, 0.69),rgb(255, 255, 255));">
+                                 <img src="{{ asset('/image/logo.png') }}" alt="Logo" class="img-fluid">
+                                </div>
 
                             <!-- Colonne formulaire -->
                             <div class="col-lg-6">
