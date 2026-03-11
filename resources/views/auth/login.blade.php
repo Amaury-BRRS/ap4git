@@ -19,7 +19,7 @@
     <link href="{{ asset('sbadmin2/css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
 
-<body class="bg-gradient-primary">
+<body style="background-color: #00a6a9;">
 
     <div class="container">
         <div class="row justify-content-center">
