@@ -1,0 +1,57 @@
+.etablissement {
+    margin: 20px;
+    text-align: center;
+}
+.etablissement h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+.etablissement p {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+/* Style pour la table des établissements */
+.table-etablissement {
+    border-collapse: collapse;
+    width: 98%;
+    margin: 0 auto;
+}
+.table-etablissement th, .table-etablissement td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.table-etablissement th {
+    background-color: #858585;
+    color: #333;
+}
+.table-etablissement td {
+    color: #333;
+}
+.table-etablissement tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.table-etablissement tr:hover {
+    background-color: #ddd;
+}
+
+/* Style pour le formulaire de création d'établissement */
+.create-etablissement {
+    margin: 20px;
+    text-align: center;
+}
+.create-etablissement h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+.create-etablissement .form-group {
+    margin-bottom: 15px;
+}
+.create-etablissement .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+/* Style pour la sidebar super admin */

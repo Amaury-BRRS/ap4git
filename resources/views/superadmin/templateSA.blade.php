@@ -35,7 +35,57 @@
 
         <!-- Sidebar -->
         {{-- utilisation d'un include pour que le code soit plus propre et segmenter sur plusieurs fichiers ici renvoie vers sidebar.blade.php --}}
-        @include('layouts.sidebar')
+        <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
+ 
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" style="padding-top: 15px !important; height: auto;">
+ 
+                <div class="sidebar-brand-icon rotate-n-15"></div>
+                <div class="sidebar-brand-text mx-3"><img class="logo" src="#" width="50%" height="50%">Excellence Pro Franche-Comté<br></div>
+            </a>
+ 
+            <hr class="sidebar-divider my-0">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ route('superadmin.index') }}">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item active">
+                <a class="nav-link" href={{ route('superadmin.etablissement.create') }}>
+                    <i class="fas fa-building"></i>
+                    <span>Ajouter un établissement</span>
+                </a>
+            </li>
+
+            <hr class="sidebar-divider d-none d-md-block">
+ 
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Ajouter une formation</span>
+                </a>
+            </li>
+ 
+            <hr class="sidebar-divider d-none d-md-block">
+ 
+            <li class="nav-item active">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Page administrateur</span>
+                </a>
+            </li>
+ 
+            <hr class="sidebar-divider d-none d-md-block">
+ 
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+ 
+        </ul>       
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -45,7 +95,25 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include('layouts.navbar')
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <h2>Super Administrateur</h2>
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                    </button>
+ 
+                    <ul class="navbar-nav ml-auto">
+ 
+                        <div class="topbar-divider d-none d-sm-block"></div>
+ 
+                        <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Nom Prenom</span>
+                        <img class="img-profile rounded-circle" src="{{ asset('sbadmin2/img/undraw_profile.svg') }}">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown"></div>
+                        </li>
+                    </ul>
+                </nav>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
