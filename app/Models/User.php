@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'type_user', 
+        'type_user',
     ];
 
     /**
@@ -44,8 +44,6 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'est_admin' => 'boolean',
-            'est_super_admin' => 'boolean',
         ];
     }
 
