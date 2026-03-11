@@ -17,6 +17,10 @@ Route::get('/template', function () {
     return view('template');
 })->middleware(['auth', 'verified'])->name('template');
 
+Route::get('/template', function () {
+    return view('template');
+})->middleware(['auth', 'verified'])->name('template');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/profile/show', [ProfileController::class, 'show'])->name('profile.show');
