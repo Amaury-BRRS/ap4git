@@ -21,8 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+<<<<<<< HEAD
         'est_admin',
         'est_super_admin',
+=======
+        'type_user',
+>>>>>>> 87e51b9 (modif en bdd)
     ];
 
     /**
@@ -48,6 +52,30 @@ class User extends Authenticatable
             'est_admin' => 'boolean',
             'est_super_admin' => 'boolean',
         ];
+    }
+
+    /**
+     * Vérifier si l'utilisateur est un admin
+     */
+    public function isAdmin(): bool
+    {
+        return $this->type_user === 'admin' || $this->type_user === 'superadmin';
+    }
+
+    /**
+     * Vérifier si l'utilisateur est un super admin
+     */
+    public function isSuperAdmin(): bool
+    {
+        return $this->type_user === 'superadmin';
+    }
+
+    /**
+     * Vérifier si l'utilisateur est un utilisateur normal
+     */
+    public function isUser(): bool
+    {
+        return $this->type_user === 'user';
     }
 
     public function echanges()

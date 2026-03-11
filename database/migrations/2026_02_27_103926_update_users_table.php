@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
+<<<<<<< HEAD
             $table->string('user_type')->default('user')->after('name');
+=======
+            $table->string('type_user')->after('email');
+>>>>>>> 87e51b9 (modif en bdd)
         });
     }
 
@@ -22,7 +26,11 @@ return new class extends Migration
     public function down(): void
     {
             Schema::table('users', function (Blueprint $table) {
+<<<<<<< HEAD
                 $table->dropColumn('user_type');
+=======
+                $table->dropColumn('type_user');
+>>>>>>> 87e51b9 (modif en bdd)
             });
     }
 };
