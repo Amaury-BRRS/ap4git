@@ -10,17 +10,21 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
+            
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('template') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Tableau de bord</span></a>
+
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+
+
+            @if (auth()->user()->isAdmin() || auth()->user()->isSuperAdmin())
             <!-- Heading -->
             <div class="sidebar-heading">
                 Interface
@@ -31,35 +35,41 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <span>liste d'utilisateurs</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <h6 class="collapse-header">Les utilisateurs :</h6>
+                        
+                        @if (auth()->user()->isSuperAdmin())
+                            <a class="collapse-item" href="liste_users">Liste des users</a>
+                            <a class="collapse-item" href="liste_admin">Liste des admin</a>
+                            <a class="collapse-item" href="liste_super_admin">Liste des super admin</a>
+                        @else
+                            <a class="collapse-item" href="liste_users">Liste des users</a>
+                        @endif
                     </div>
                 </div>
             </li>
+            @endif
 
             <!-- Nav Item - Utilities Collapse Menu -->
+                @if (auth()->user()->isAdmin() || auth()->user()->isSuperAdmin())
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                    <span>liste des enquêtes</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a> 
+                        <h6 class="collapse-header">Les enquêtes :</h6>
+                        <a class="collapse-item" href="enquete_en_cours">enquete en cours</a>
+                        <a class="collapse-item" href="enquetes_terminées">enquetes terminées</a>
             </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+            @endif
+            
 
             <!-- Heading -->
             <div class="sidebar-heading">
