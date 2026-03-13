@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\liste\UserController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\EtablissementController;
 use Illuminate\Support\Facades\Route;
+
 
 // route pour afficher la page d'accueil
 Route::get('/', function () {
@@ -21,6 +23,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// routes listes utilisateurs
+Route::middleware('auth')->prefix('liste_utilisateurs')->group(function () {
+    Route::get('/user', [UserController::class, 'index'])->name('liste_utilisateurs.user');
+    Route::get('/admin', [UserController::class, 'admin'])->name('liste_utilisateurs.admin');
+    Route::get('/superadmin', [UserController::class, 'superadmin'])->name('liste_utilisateurs.super_admin');
+    Route::delete('/user/{id}' , [UserController::class, 'destroy'])->name('liste_utilisateurs.destroy');
+    Route::patch('/user/{id}' , [UserController::class, 'updateRole'])->name('liste_utilisateurs.update_role');
+});
 Route::middleware('est_super_admin')->group(function () {
 
 });
