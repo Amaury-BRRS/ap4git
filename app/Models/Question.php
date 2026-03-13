@@ -11,11 +11,16 @@ class Question extends Model
     use HasFactory;
 
     public function choix(){
-        return $this->HasMany(Choix::class); 
+        return $this->hasMany(Choix::class); 
     }
 
     public function enquete(){
-        return $this->BelongsTo(Enquete::class); 
+        return $this->belongsTo(Enquete::class); 
+    }
+
+    public function formulairesReponse()
+    {
+        return $this->hasMany(FormulaireReponse::class, 'id_question');
     }
 
     protected $fillable = [

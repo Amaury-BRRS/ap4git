@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_superadmin')->default(false)->after('password');
-        });
+         Schema::table('participants', function (Blueprint $table) {
+            $table->foreignId('enquete_id')->constrained()->onDelete('cascade');
+        }); 
     }
 
     /**
@@ -21,8 +21,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_superadmin');
+        Schema::table('participants', function (Blueprint $table) {
+            $table->dropForeign(['enquete_id']);
+            $table->dropColumn('enquete_id');
         });
     }
 };

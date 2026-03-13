@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contrat__participant', function (Blueprint $table) {
-            $table->foreignId('contrats_id')->constrained()->onDelete('cascade');
-            $table->foreignId('participants_id')->constrained()->onDelete('cascade');
-            $table->primary(['contrats_id', 'participants_id']);
+        Schema::create('contrat_participant', function (Blueprint $table) {
+            $table->foreignId('contrat_id')->constrained()->onDelete('cascade');
+            $table->foreignId('participant_id')->constrained()->onDelete('cascade');
+            $table->primary(['contrat_id', 'participant_id']);
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contrat__participant');
+        Schema::dropIfExists('contrat_participant');
     }
 };

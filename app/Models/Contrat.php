@@ -10,9 +10,9 @@ class Contrat extends Model
     /** @use HasFactory<\Database\Factories\ContratFactory> */
     use HasFactory;
 
-    public function participant()
+    public function participants()
     {
-        return $this->hasMany(Participant::class);
+        return $this->belongsToMany(Participant::class);
     }
 
     protected $fillable = [

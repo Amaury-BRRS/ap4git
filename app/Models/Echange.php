@@ -10,6 +10,16 @@ class Echange extends Model
 {
     /** @use HasFactory<\Database\Factories\EchangeFactory> */
     use HasFactory;
+
+    public function enquete()
+    {
+        return $this->belongsTo(Enquete::class, 'id_enquete');
+    }
+
+    public function participant()
+    {
+        return $this->belongsTo(Participant::class, 'id_participant');
+    }
   
     protected $fillable = [
         'type',

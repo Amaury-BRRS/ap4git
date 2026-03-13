@@ -18,6 +18,9 @@ class FormationFactory extends Factory
     {
         return [
             'libelle' => $this->faker->JobTitle(),
+            // on ne gere pas les relations ici on le fais directement dans le seeder car table pivot
+            // 'etablissement_id'=>null,  
+
         ];
     }
 }

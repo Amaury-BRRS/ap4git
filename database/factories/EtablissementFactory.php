@@ -23,6 +23,9 @@ class EtablissementFactory extends Factory
             'code_postal' => $this->faker->postcode(),
             'email' => $this->faker->unique()->safeEmail(),
             'telephone' => $this->faker->phoneNumber(),
+            // relation avec formation gérée dans le seeder
+            // 'formation_id'=>null, 
+
         ];
     }
 }

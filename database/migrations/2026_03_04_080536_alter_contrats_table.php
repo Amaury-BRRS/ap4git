@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('contrats', function (Blueprint $table) {
-            $table->foreignId('formations_id')->constrained()->onDelete('cascade');
+            $table->foreignId('etablissement_id')->constrained()->onDelete('cascade');
+            $table->foreignId('formation_id')->constrained()->onDelete('cascade');
         });
     }
 
@@ -22,8 +23,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('contrats', function (Blueprint $table) {
-            $table->dropForeign(['formations_id']);
-            $table->dropColumn('formations_id');
+            $table->dropForeign(['etablissement_id']);
+            $table->dropColumn('etablissement_id');
+            // $table->dropForeign(['formation_id']);
+            // $table->dropColumn('formation_id');
         });
     }
 };

@@ -10,9 +10,24 @@ class Participant extends Model
     /** @use HasFactory<\Database\Factories\ParticipantFactory> */
     use HasFactory;
 
-    public function contrat()
+    public function contrats()
     {
         return $this->belongsToMany(Contrat::class);
+    }
+    
+    public function enquete()
+    {
+        return $this->belongsToMany(enquete::class); 
+    }
+
+    public function reponses()
+    {
+        return $this->hasMany(Reponse::class, 'id_participant');
+    }
+
+    public function echanges()
+    {
+        return $this->hasMany(Echange::class, 'id_participant');
     }
 
     protected $fillable = [
@@ -21,7 +36,4 @@ class Participant extends Model
         'type_participant',
     ];
 
-    public function enquete(){
-        return $this->HasMany(enquete::class); 
-    }
 }
