@@ -5,14 +5,15 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\EtablissementController;
 use Illuminate\Support\Facades\Route;
 
-// route pour afficher le template.blade.php par défaut 
+// route pour afficher la page d'accueil
 Route::get('/', function () {
-    return view('template');
-})->name("template"); 
+    return view('accueil');
+})->name("accueil");
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/template', function () {
+    return view('template');
+})->middleware(['auth', 'verified'])->name('template');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -20,9 +21,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::middleware('est_super_admin')->group(function () {
-
-});
 Route::get('/liste', [EtablissementController::class, 'index'])->name('superadmin.etablissement.index');
 Route::get('/etablissement/create', [EtablissementController::class, 'create'])->name('superadmin.etablissement.create');
 Route::post('/etablissement', [EtablissementController::class, 'store'])->name('superadmin.etablissement.store');
