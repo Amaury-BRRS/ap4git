@@ -27,6 +27,9 @@ Route::get('/liste', [EtablissementController::class, 'index'])->name('superadmi
 Route::get('/etablissement/create', [EtablissementController::class, 'create'])->name('superadmin.etablissement.create');
 Route::post('/etablissement', [EtablissementController::class, 'store'])->name('superadmin.etablissement.store');
 Route::get('/index', [SuperAdminController::class, 'index'])->name('superadmin.index');
+Route::get('/etablissement/{id}/edit', [EtablissementController::class, 'edit'])->name('superadmin.etablissement.edit');
+Route::put('/etablissement/{id}', [EtablissementController::class, 'update'])->name('superadmin.etablissement.update');
+Route::delete('/etablissement/{id}', [EtablissementController::class, 'destroy'])->name('superadmin.etablissement.destroy');
 
 require __DIR__.'/auth.php';
 

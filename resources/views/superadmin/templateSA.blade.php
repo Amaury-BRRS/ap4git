@@ -118,12 +118,22 @@
 
                 <!-- Begin Page Content -->
                 {{-- instanciation d'un champ vide => l'endroit où notre contenu principal sera affiché  --}}
+                @session('success')
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endsession
+                @session('error')
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endsession
                 @yield('content')
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
-
+            
             <!-- Footer -->
             @include('layouts.footer')
             <!-- End of Footer -->
