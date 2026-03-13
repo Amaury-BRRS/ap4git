@@ -30,4 +30,23 @@ class EtablissementRequest extends FormRequest
             'telephone' => 'required|string|max:14',
         ];
     }
+    public function messages()
+    {
+        return [
+            'nom.required' => 'Le nom de l\'établissement est requis.',
+            'adresse.required' => 'L\'adresse de l\'établissement est requise.',
+            'ville.required' => 'La ville de l\'établissement est requise.',
+            'code_postal.required' => 'Le code postal de l\'établissement est requis.',
+            'code_postal.numeric' => 'Le code postal doit être un nombre.',
+            'code_postal.digits' => 'Le code postal doit comporter exactement 5 chiffres.',
+            'email.required' => 'L\'email de l\'établissement est requis.',
+            'email.string' => 'L\'email doit être une chaîne de caractères.',
+            'email.lowercase' => 'L\'email doit être en minuscules.',
+            'email.email' => 'L\'email doit être une adresse email valide.',
+            'email.max' => 'L\'email ne doit pas dépasser 255 caractères.',
+            'telephone.required' => 'Le numéro de téléphone de l\'établissement est requis.',
+            'telephone.string' => 'Le numéro de téléphone doit être une chaîne de caractères.',
+            'telephone.max' => 'Le numéro de téléphone ne doit pas dépasser 14 caractères.',
+        ];
+    }
 }
