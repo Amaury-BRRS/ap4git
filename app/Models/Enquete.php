@@ -11,20 +11,25 @@ class Enquete extends Model
     use HasFactory;
 
     public function question(){
-        return $this->HasMany(Question::class); 
+        return $this->hasMany(Question::class); 
     }
 
     // réponse au sens où on a répondu à l'enquête en générale, pas aux questions 
     public function reponse(){
-        return $this->HasMany(Reponse::class); 
+        return $this->hasMany(Reponse::class); 
     }
 
     public function user(){
-        return $this->HasOne(User::class); 
+        return $this->hasOne(User::class); 
     }
 
     public function participant(){
-        return $this->HasOne(Participant::class); 
+        return $this->hasOne(Participant::class); 
+    }
+
+    public function echange()
+    {
+        return $this->hasMany(Echange::class); 
     }
 
     protected $fillable = [
