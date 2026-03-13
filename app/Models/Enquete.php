@@ -10,14 +10,12 @@ class Enquete extends Model
     /** @use HasFactory<\Database\Factories\EnqueteFactory> */
     use HasFactory;
 
-    public function questions()
-    {
-        return $this->HasMany(Question::class); 
+    public function question(){
+        return $this->hasMany(Question::class); 
     }
 
     // réponse au sens où on a répondu à l'enquête en générale, pas aux questions 
-    public function reponse()
-    {
+    public function reponse(){
         return $this->hasMany(Reponse::class); 
     }
 
@@ -32,13 +30,16 @@ class Enquete extends Model
         return $this->belongsToMany(Participant::class); 
 =======
     public function user(){
-        return $this->HasOne(User::class); 
->>>>>>> 15e80c3 (no message)
+        return $this->hasOne(User::class); 
     }
 
-    public function user()
+    public function participant(){
+        return $this->hasOne(Participant::class); 
+    }
+
+    public function echange()
     {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->hasMany(Echange::class); 
     }
 
     protected $fillable = [
