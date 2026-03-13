@@ -1,0 +1,92 @@
+.etablissement {
+    margin: 20px;
+    text-align: center;
+}
+.etablissement h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+.etablissement p {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+/* Style pour la page des listes d'établissements */
+.table-etablissement {
+    border-collapse: collapse;
+    width: 98%;
+    margin: 0 auto;
+}
+.table-etablissement th, .table-etablissement td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.table-etablissement th {
+    background-color: #858585;
+    color: #333;
+}
+.table-etablissement td {
+    color: #333;
+}
+.table-etablissement tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.table-etablissement tr:hover {
+    background-color: #ddd;
+}
+
+/* Style pour le formulaire de création d'établissement */
+.create-etablissement {
+    margin: 20px;
+    text-align: center;
+}
+.create-etablissement h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+.create-etablissement .form-group {
+    margin-bottom: 15px;
+}
+.create-etablissement .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+/* Style pour la page d'édition d'établissement */
+.edit-etablissement {
+    margin: 20px;
+    text-align: center;
+}
+.edit-etablissement h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+.edit-etablissement .form-group {
+    margin-bottom: 15px;
+}
+.edit-etablissement .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+/* Style pour les messages de succès et d'erreur */
+.alert {
+    margin: 20px;
+    padding: 15px;
+    border-radius: 4px;
+    width: 98%;
+    margin: 0 auto;
+}
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}

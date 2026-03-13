@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+<<<<<<< HEAD
 use App\Models\Enquete;
 use App\Models\Question;
 use App\Models\Choix;
@@ -14,6 +15,11 @@ use App\Models\Formation;
 use App\Models\Participant;
 use App\Models\FormulaireReponse;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+=======
+use App\Models\Etablissement;
+use App\Models\Formation;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+>>>>>>> origin/developp
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,6 +31,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+<<<<<<< HEAD
         
         // User::factory()->create([
             //     'name' => 'Test User',
@@ -65,5 +72,10 @@ class DatabaseSeeder extends Seeder
             Echange::factory(5)->create(); 
             Reponse::factory(5)->create(); 
         
+=======
+        User::factory(3)->create();
+        Etablissement::factory(3)->create();
+        Formation::factory(3)->create();
+>>>>>>> origin/developp
     }
 }
