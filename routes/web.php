@@ -42,5 +42,6 @@ Route::get('/etablissement/{id}/edit', [EtablissementController::class, 'edit'])
 Route::put('/etablissement/{id}', [EtablissementController::class, 'update'])->name('superadmin.etablissement.update');
 Route::delete('/etablissement/{id}', [EtablissementController::class, 'destroy'])->name('superadmin.etablissement.destroy');
 
-require __DIR__.'/auth.php';
 
+require __DIR__.'/auth.php';
+    

@@ -71,6 +71,7 @@ class User extends Authenticatable
         return $this->type_user === 'user';
     }
 
+<<<<<<< HEAD
     public function echanges()
     {
         return $this->hasMany(Echange::class);
@@ -80,4 +81,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Enquete::class, 'id_user');
     }
+=======
+>>>>>>> 15e80c3 (no message)
 }

@@ -21,6 +21,7 @@ class Enquete extends Model
         return $this->hasMany(Reponse::class); 
     }
 
+<<<<<<< HEAD
     public function echange()
     {
         return $this->hasMany(Echange::class); 
@@ -29,6 +30,10 @@ class Enquete extends Model
     public function participant()
     {
         return $this->belongsToMany(Participant::class); 
+=======
+    public function user(){
+        return $this->HasOne(User::class); 
+>>>>>>> 15e80c3 (no message)
     }
 
     public function user()
