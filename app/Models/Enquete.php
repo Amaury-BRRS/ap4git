@@ -19,10 +19,6 @@ class Enquete extends Model
         return $this->HasMany(Reponse::class); 
     }
 
-    public function echange(){
-        return $this->HasMany(Echange::class); 
-    }
-
     public function user(){
         return $this->HasOne(User::class); 
     }

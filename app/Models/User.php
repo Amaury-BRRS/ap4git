@@ -71,8 +71,4 @@ class User extends Authenticatable
         return $this->type_user === 'user';
     }
 
-    public function echanges()
-    {
-        return $this->hasMany(Echange::class);
-    }
 }

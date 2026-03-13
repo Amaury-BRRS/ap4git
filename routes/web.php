@@ -30,5 +30,6 @@ Route::middleware('auth')->prefix('liste_utilisateurs')->group(function () {
     Route::patch('/user/{id}' , [UserController::class, 'updateRole'])->name('liste_utilisateurs.update_role');
 });
 
-require __DIR__.'/auth.php';
 
+require __DIR__.'/auth.php';
+    
