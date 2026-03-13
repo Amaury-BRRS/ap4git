@@ -90,3 +90,63 @@
     color: #721c24;
     border: 1px solid #f5c6cb;
 }
+
+/* Style pour la liste des formations */
+.table-formation {
+    border-collapse: collapse;
+    width: 98%;
+    margin: 0 auto;
+}
+.table-formation th, .table-formation td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.table-formation th {
+    background-color: #858585;
+    color: #333;
+}
+.table-formation td {
+    color: #333;
+}
+.table-formation tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.table-formation tr:hover {
+    background-color: #ddd;
+}
+
+/* Style pour le formulaire de création de formation */
+.create-formation {
+    margin: 20px;
+    text-align: center;
+}
+.create-formation h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+.create-formation .form-group {
+    margin-bottom: 15px;
+}
+.create-formation .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+/* Style pour la page d'édition de formation */
+.edit-formation {
+    margin: 20px;
+    text-align: center;
+}
+.edit-formation h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+.edit-formation .form-group {
+    margin-bottom: 15px;
+}
+.edit-formation .form-control {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+}

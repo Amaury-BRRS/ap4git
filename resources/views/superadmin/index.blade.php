@@ -6,6 +6,6 @@
 </div>
 <div class="superadmin-actions" style="display: flex; justify-content: center; gap: 20px; margin-top: 30px;">
     <a href="{{ route('superadmin.etablissement.index') }}" class="btn btn-primary">Voir les établissements</a>
-    <a href="#" class="btn btn-secondary">Voir les formations</a>
+    <a href="{{ route('superadmin.formation.index') }}" class="btn btn-secondary">Voir les formations</a>
 </div>
 @endsection
