@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EtablissementRequest;
 use Illuminate\Http\Request;
 use App\Models\Etablissement;
 
@@ -27,19 +28,18 @@ class EtablissementController extends Controller
         /**
         * Store a newly created resource in storage.
         */
-        public function store(Request $request)
+        public function store(EtablissementRequest $request)
         {
             try {
-            $request->validate([
-                'nom' => 'required',
-                'adresse' => 'required',
-                'ville' => 'required',
-                'code_postal' => 'required',
-                'email' => 'required|email',
-                'telephone' => 'required',
-            ]);
-            Etablissement::create($request->all());
-            return redirect()->route('superadmin.etablissement.etablissement')->with('success', 'Etablissement créé avec succès.');
+                $etablissement = new Etablissement();
+                $etablissement->nom = $request->input('nom');
+                $etablissement->adresse = $request->input('adresse');
+                $etablissement->ville = $request->input('ville');
+                $etablissement->code_postal = $request->input('code_postal');
+                $etablissement->email = $request->input('email');
+                $etablissement->telephone = $request->input('telephone');
+                $etablissement->save();
+                return redirect()->route('superadmin.etablissement.index')->with('success', 'Etablissement créé avec succès.');
             } catch (\Exception $e) {
                 return redirect()->back()->with('error', 'Une erreur est survenue lors de la création de l\'établissement.');
             }
@@ -58,15 +58,30 @@ class EtablissementController extends Controller
         */
         public function edit(string $id)
         {
-            //
+            $etablissement = Etablissement::findOrFail($id);
+            return view('superadmin.etablissement.edit', compact('etablissement'));
         }
     
         /**
         * Update the specified resource in storage.
         */
-        public function update(Request $request, string $id)
+        public function update(EtablissementRequest $request,$id)
         {
-            //
+            try {
+                $etablissement = Etablissement::findOrFail($id);
+                $etablissement->nom = $request->input('nom');
+                $etablissement->adresse = $request->input('adresse');
+                $etablissement->ville = $request->input('ville');
+                $etablissement->code_postal = $request->input('code_postal');
+                $etablissement->email = $request->input('email');
+                $etablissement->telephone = $request->input('telephone');
+                $etablissement->save();
+                return redirect()->route('superadmin.etablissement.index')->with('success', 'Etablissement mis à jour avec succès.');
+            }
+            catch (\Exception $e) 
+            {
+                return redirect()->back()->with('error', 'Une erreur est survenue lors de la mise à jour de l\'établissement.');
+            }
         }
     
         /**
@@ -74,6 +89,12 @@ class EtablissementController extends Controller
         */
         public function destroy(string $id)
         {
-            //
+            try {
+            $etablissement = Etablissement::findOrFail($id);
+            $etablissement->delete();
+            return redirect()->route('superadmin.etablissement.index')->with('success', 'Etablissement supprimé avec succès.');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('error', 'Une erreur est survenue lors de la suppression de l\'établissement.');
+            }
         }
 }
