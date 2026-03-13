@@ -7,10 +7,6 @@
         <thead>
             <tr>
                 <th>Nom de la formation</th>
-<<<<<<< HEAD
-                <th>Etablissement effectuant la formation</th>
-=======
->>>>>>> origin/features/view/formation
                 <th>Actions</th>
             </tr>
         </thead>
@@ -19,14 +15,6 @@
             <tr>
                 <td>{{ $formation->libelle }}</td>
                 <td>
-<<<<<<< HEAD
-                    @foreach($formation->etablissement as $etablissement)
-                        {{ $etablissement->nom }} @if(!$loop->last), @endif
-                    @endforeach
-                </td>
-                <td>
-=======
->>>>>>> origin/features/view/formation
                     <a href="{{ route('superadmin.formation.edit', $formation->id) }}" class="btn btn-primary">Modifier</a>
                     <form action="{{ route('superadmin.formation.destroy', $formation->id) }}" method="POST" style="display: inline-block;"
                         onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette formation ?');">
