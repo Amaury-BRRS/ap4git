@@ -68,7 +68,10 @@
                         <a class="collapse-item" href="enquete_en_cours">enquete en cours</a>
                         <a class="collapse-item" href="enquetes_terminées">enquetes terminées</a>
             </li>
-            @endif
+             @endif
+
+            
+
             
 
             <!-- Heading -->
@@ -80,7 +83,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('echange.index') }}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Echanges</span></a>
             </li>
