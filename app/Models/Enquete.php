@@ -9,4 +9,8 @@ class Enquete extends Model
 {
     /** @use HasFactory<\Database\Factories\EnqueteFactory> */
     use HasFactory;
+
+    public function echange(){
+        return $this->HasMany(Echange::class); 
+    }
 }
