@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('type_user')->default('user')->after('email');
+            $table->string('type_user')->default('salarié')->after('email');
         });
     }
 
