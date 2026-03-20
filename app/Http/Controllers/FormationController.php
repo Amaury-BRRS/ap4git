@@ -7,26 +7,12 @@ use App\Models\Formation;
 
 class FormationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $formations = Formation::all();
+        $formations = Formation::with('etablissement')->get();
         return view('superadmin.formation.index', compact('formations'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('superadmin.formation.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(FormationRequest $request)
     {
         try {
@@ -39,31 +25,19 @@ class FormationController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit($id)
     {
-        //
+        $formation = Formation::with('etablissement')->findOrFail($id);
+        $etablissements = Etablissement::all();
+        return view('superadmin.formation.edit', compact('formation', 'etablissements'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        $formation = Formation::findOrFail($id);
-        return view('superadmin.formation.edit', compact('formation'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(FormationRequest $request, string $id)
+    public function update(FormationRequest $request, $id)
     {
         try {
-            $formation = Formation::findOrFail($id);
+            $formation = Formation::with('etablissement')->findOrFail($id);
             $formation->libelle = $request->input('libelle');
+            $formation->etablissement()->syncWithoutDetaching($request->etablissement);
             $formation->save();
             return redirect()->route('superadmin.formation.index')->with('success', 'Formation mise à jour avec succès.');
         } catch (\Exception $e) {
@@ -72,8 +46,13 @@ class FormationController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Display the specified resource.
      */
+    public function show(string $id)
+    {
+        //
+    }
+
     public function destroy(string $id)
     {
         try {
