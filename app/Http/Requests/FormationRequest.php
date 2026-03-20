@@ -25,12 +25,4 @@ class FormationRequest extends FormRequest
             'libelle' => 'required|string|max:255',
         ];
     }
-    public function messages()
-    {
-        return [
-            'libelle.required' => 'Le libellé de la formation est requis.',
-            'libelle.string' => 'Le libellé doit être une chaîne de caractères.',
-            'libelle.max' => 'Le libellé ne doit pas dépasser 255 caractères.',
-        ];
-    }
 }

@@ -14,32 +14,6 @@ class FormationController extends Controller
         return view('superadmin.formation.index', compact('formations'));
     }
 
-
-class FormationController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $formations = Formation::all();
-        return view('superadmin.formation.index', compact('formations'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('superadmin.formation.create');
-    }
-
-    public function store(FormationRequest $request)
-    {
-        // Validation et création de la formation
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(FormationRequest $request)
     {
         try {
@@ -66,6 +40,11 @@ class FormationController extends Controller
             $formation = Formation::with('etablissement')->findOrFail($id);
             $formation->libelle = $request->input('libelle');
             $formation->etablissement()->syncWithoutDetaching($request->etablissement);
+            $formation->save();
+            return redirect()->route('superadmin.formation.index')->with('success', 'Formation mise à jour avec succès.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Une erreur est survenue lors de la mise à jour de la formation.');
+        }
     }
 
     /**
@@ -76,39 +55,6 @@ class FormationController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        $formation = Formation::findOrFail($id);
-        return view('superadmin.formation.edit', compact('formation'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(FormationRequest $request, string $id)
-    {
-        try {
-            $formation = Formation::findOrFail($id);
-            $formation->libelle = $request->input('libelle');
-            $formation->save();
-            return redirect()->route('superadmin.formation.index')->with('success', 'Formation mise à jour avec succès.');
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Une erreur est survenue lors de la mise à jour de la formation.');
-        }
-    }
-
-    public function destroy($id)
-    {
-        // Suppression de la formation
-        try {
-            $formation = Formation::with('etablissement')->findOrFail($id);
-            $formation->etablissement()->detach();
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         try {
