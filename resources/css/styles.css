@@ -91,7 +91,11 @@
     border: 1px solid #f5c6cb;
 }
 
+<<<<<<< HEAD
 /* Style pour la liste des formation */
+=======
+/* Style pour la liste des formations */
+>>>>>>> origin/features/view/formation
 .table-formation {
     border-collapse: collapse;
     width: 98%;
@@ -115,7 +119,11 @@
     background-color: #ddd;
 }
 
+<<<<<<< HEAD
 /* Style pour le formulaire de création d'une formation */
+=======
+/* Style pour le formulaire de création de formation */
+>>>>>>> origin/features/view/formation
 .create-formation {
     margin: 20px;
     text-align: center;
@@ -133,7 +141,11 @@
     padding: 8px;
 }
 
+<<<<<<< HEAD
 /* Style pour la page d'édition d'une formation */
+=======
+/* Style pour la page d'édition de formation */
+>>>>>>> origin/features/view/formation
 .edit-formation {
     margin: 20px;
     text-align: center;
