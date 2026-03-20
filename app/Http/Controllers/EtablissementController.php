@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EtablissementRequest;
 use Illuminate\Http\Request;
 use App\Models\Etablissement;
+use App\Models\Formation;
 
 class EtablissementController extends Controller
 {
@@ -68,7 +69,7 @@ class EtablissementController extends Controller
         public function update(EtablissementRequest $request,$id)
         {
             try {
-                $etablissement = Etablissement::findOrFail($id);
+                $etablissement = Etablissement::with('formation')->findOrFail($id);
                 $etablissement->nom = $request->input('nom');
                 $etablissement->adresse = $request->input('adresse');
                 $etablissement->ville = $request->input('ville');
