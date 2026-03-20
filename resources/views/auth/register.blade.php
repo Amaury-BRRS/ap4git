@@ -62,16 +62,36 @@
                                         <div class="form-group">
                                             <input
                                                 type="text"
-                                                name="name"
-                                                value="{{ old('name') }}"
-                                                class="form-control form-control-user @error('name') is-invalid @enderror"
-                                                id="name"
+                                                name="nom"
+                                                value="{{ old('nom') }}"
+                                                class="form-control form-control-user @error('nom') is-invalid @enderror"
+                                                id="nom"
                                                 placeholder="Nom"
                                                 required
                                                 autofocus
-                                                autocomplete="name"
+                                                autocomplete="nom"
                                             >
-                                            @error('name')
+                                            @error('nom')
+                                                <div class="invalid-feedback d-block">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <!-- prenom -->
+                                        <div class="form-group">
+                                            <input
+                                                type="text"
+                                                name="prenom"
+                                                value="{{ old('prenom') }}"
+                                                class="form-control form-control-user @error('prenom') is-invalid @enderror"
+                                                id="prenom"
+                                                placeholder="prenom"
+                                                required
+                                                autofocus
+                                                autocomplete="prenom"
+                                            >
+                                            @error('prenom')
                                                 <div class="invalid-feedback d-block">
                                                     {{ $message }}
                                                 </div>

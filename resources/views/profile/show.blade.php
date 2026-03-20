@@ -21,16 +21,16 @@
 
                         <!-- Nom -->
                         <div class="form-group">
-                            <label for="name">Nom</label>
+                            <label for="nom">Nom</label>
                             <input 
                                 type="text" 
-                                class="form-control @error('name') is-invalid @enderror" 
-                                id="name" 
-                                name="name" 
-                                value="{{ old('name', $user->name) }}"
+                                class="form-control @error('nom') is-invalid @enderror" 
+                                id="nom" 
+                                name="nom" 
+                                value="{{ old('nom', $user->nom) }}"
                                 required
                             >
-                            @error('name')
+                            @error('nom')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
@@ -53,13 +53,13 @@
 
                         <!-- Type d'utilisateur -->
                         <div class="form-group">
-                            <label for="type_user">Type d'utilisateur</label>
+                            <label for="user_type">Type d'utilisateur</label>
                             <input 
                                 type="text" 
                                 class="form-control" 
-                                id="type_user" 
-                                name="type_user" 
-                                value="{{ ucfirst($user->type_user) }}"
+                                id="user_type" 
+                                name="user_type" 
+                                value="{{ ucfirst($user->user_type) }}"
                                 disabled
                             >
                             <small class="form-text text-muted">Non modifiable</small>
@@ -119,7 +119,7 @@
                 </div>
                 <div class="card-body text-center">
                     <img class="img-profile rounded-circle mb-3" style="max-width: 150px;" src="{{ asset('sbadmin2/img/undraw_profile.svg') }}">
-                    <h5>{{ $user->name }}</h5>
+                    <h5>{{ $user->nom }}</h5>
                     <p class="text-muted mb-0">{{ $user->email }}</p>
                 </div>
             </div>
@@ -132,8 +132,8 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <strong>Type:</strong>
-                        <span class="badge badge-{{ $user->type_user === 'superadmin' ? 'danger' : ($user->type_user === 'admin' ? 'warning' : 'info') }}">
-                            {{ ucfirst($user->type_user) }}
+                        <span class="badge badge-{{ $user->user_type === 'superadmin' ? 'danger' : ($user->user_type === 'admin' ? 'warning' : 'info') }}">
+                            {{ ucfirst($user->user_type) }}
                         </span>
                     </div>
                     <div class="mb-3">
