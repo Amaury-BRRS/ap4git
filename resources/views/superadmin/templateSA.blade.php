@@ -64,7 +64,7 @@
             <hr class="sidebar-divider d-none d-md-block">
  
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{ route('superadmin.formation.create') }}">
                     <i class="fas fa-graduation-cap"></i>
                     <span>Ajouter une formation</span>
                 </a>
