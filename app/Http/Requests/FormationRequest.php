@@ -25,8 +25,6 @@ class FormationRequest extends FormRequest
             'libelle' => 'required|string|max:255',
         ];
     }
-<<<<<<< HEAD
-=======
     public function messages()
     {
         return [
@@ -35,5 +33,4 @@ class FormationRequest extends FormRequest
             'libelle.max' => 'Le libellé ne doit pas dépasser 255 caractères.',
         ];
     }
->>>>>>> origin/features/view/formation
 }

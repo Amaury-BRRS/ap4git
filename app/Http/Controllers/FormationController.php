@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FormationRequest;
 use App\Models\Formation;
-<<<<<<< HEAD
 use App\Models\Etablissement;
 
 class FormationController extends Controller
@@ -15,7 +14,6 @@ class FormationController extends Controller
         return view('superadmin.formation.index', compact('formations'));
     }
 
-=======
 
 class FormationController extends Controller
 {
@@ -31,23 +29,19 @@ class FormationController extends Controller
     /**
      * Show the form for creating a new resource.
      */
->>>>>>> origin/features/view/formation
     public function create()
     {
         return view('superadmin.formation.create');
     }
 
-<<<<<<< HEAD
     public function store(FormationRequest $request)
     {
         // Validation et création de la formation
-=======
     /**
      * Store a newly created resource in storage.
      */
     public function store(FormationRequest $request)
     {
->>>>>>> origin/features/view/formation
         try {
             $formation = new Formation();
             $formation->libelle = $request->input('libelle');
@@ -56,7 +50,6 @@ class FormationController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Une erreur est survenue lors de la création de la formation.');
         }
-<<<<<<< HEAD
         
     }
 
@@ -73,7 +66,6 @@ class FormationController extends Controller
             $formation = Formation::with('etablissement')->findOrFail($id);
             $formation->libelle = $request->input('libelle');
             $formation->etablissement()->syncWithoutDetaching($request->etablissement);
-=======
     }
 
     /**
@@ -101,7 +93,6 @@ class FormationController extends Controller
         try {
             $formation = Formation::findOrFail($id);
             $formation->libelle = $request->input('libelle');
->>>>>>> origin/features/view/formation
             $formation->save();
             return redirect()->route('superadmin.formation.index')->with('success', 'Formation mise à jour avec succès.');
         } catch (\Exception $e) {
@@ -109,14 +100,12 @@ class FormationController extends Controller
         }
     }
 
-<<<<<<< HEAD
     public function destroy($id)
     {
         // Suppression de la formation
         try {
             $formation = Formation::with('etablissement')->findOrFail($id);
             $formation->etablissement()->detach();
-=======
     /**
      * Remove the specified resource from storage.
      */
@@ -124,7 +113,6 @@ class FormationController extends Controller
     {
         try {
             $formation = Formation::findOrFail($id);
->>>>>>> origin/features/view/formation
             $formation->delete();
             return redirect()->route('superadmin.formation.index')->with('success', 'Formation supprimée avec succès.');
         } catch (\Exception $e) {
