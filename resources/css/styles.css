@@ -150,3 +150,28 @@
     border-radius: 4px;
     padding: 8px;
 }
+
+/* Style pour la liste des liaison */
+
+.table-liaison {
+    border-collapse: collapse;
+    width: 98%;
+    margin: 0 auto;
+}
+.table-liaison th, .table-liaison td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.table-liaison th {
+    background-color: #858585;
+    color: #333;
+}
+.table-liaison td {
+    color: #333;
+}
+.table-liaison tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.table-liaison tr:hover {
+    background-color: #ddd;
+}

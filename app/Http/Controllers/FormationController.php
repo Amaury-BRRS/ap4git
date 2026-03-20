@@ -13,6 +13,11 @@ class FormationController extends Controller
         return view('superadmin.formation.index', compact('formations'));
     }
 
+    public function create()
+    {
+        return view('superadmin.formation.create');
+    }
+
     public function store(FormationRequest $request)
     {
         try {
@@ -62,5 +67,11 @@ class FormationController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Une erreur est survenue lors de la suppression de la formation.');
         }
+    }
+
+    public function liaison()
+    {
+        $formations = Formation::with('etablissement')->get();
+        return view('superadmin.formation.liaison', compact('formations'));
     }
 }
