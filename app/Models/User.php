@@ -18,10 +18,10 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'nom',
         'email',
         'password',
-        'type_user',
+        'user_type',
     ];
 
     /**
@@ -52,7 +52,7 @@ class User extends Authenticatable
      */
     public function isAdmin(): bool
     {
-        return $this->type_user === 'admin' || $this->type_user === 'superadmin';
+        return $this->user_type === 'admin' || $this->user_type === 'superadmin';
     }
 
     /**
@@ -60,7 +60,7 @@ class User extends Authenticatable
      */
     public function isSuperAdmin(): bool
     {
-        return $this->type_user === 'superadmin';
+        return $this->user_type === 'superadmin';
     }
 
     /**
@@ -68,40 +68,16 @@ class User extends Authenticatable
      */
     public function isUser(): bool
     {
-        return $this->type_user === 'user';
+        return $this->user_type === 'user';
     }
 
-<<<<<<< HEAD
     public function echanges()
     {
-        return $this->type_user === 'admin' || $this->type_user === 'superadmin';
+        return $this->user_type === 'admin' || $this->user_type === 'superadmin';
     }
-
-    /**
-     * Vérifier si l'utilisateur est un super admin
-     */
-    public function isSuperAdmin(): bool
-    {
-        return $this->type_user === 'superadmin';
-    }
-
-    /**
-     * Vérifier si l'utilisateur est un utilisateur normal
-     */
-    public function isUser(): bool
-    {
-        return $this->type_user === 'user';
-    }
-
-     public function echanges()
-    {
-        return $this->hasMany(Echange::class);
-    }
-
+   
     public function enquetes()
     {
         return $this->hasMany(Enquete::class, 'id_user');
     }
-=======
->>>>>>> 15e80c3 (no message)
 }
