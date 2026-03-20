@@ -9,6 +9,7 @@
         <div class="form-group">
             <label for="libelle">Libellé de la formation</label>
             <input type="text" class="form-control" id="libelle" name="libelle" value="{{ $formation->libelle }}" placeholder="Entrez le libellé de la formation" required>
+<<<<<<< HEAD
             <label for="etablissement">Etablissement effectuant la formation</label>
             <select class="form-control" id="etablissement" name="etablissement[]" multiple>
                 @foreach($etablissements as $etablissement)
@@ -16,6 +17,8 @@
                         {{ $etablissement->nom }}
                 @endforeach
             </select>
+=======
+>>>>>>> origin/features/view/formation
         </div>
         <button type="submit" class="btn btn-primary">Modifier</button>
     </form>
