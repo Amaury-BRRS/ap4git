@@ -21,7 +21,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('/') }}sbadmin2/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="{{ asset('/') }}sbadmin2/css/sbadminTemplate.css" rel="stylesheet">
-    @vite('resources/css/styles.css')
+    {{-- @vite('resources/css/styles.css') --}}
     
 
     {{-- envoie des styles --}}
@@ -67,6 +67,16 @@
                 <a class="nav-link" href="#">
                     <i class="fas fa-graduation-cap"></i>
                     <span>Ajouter une formation</span>
+                </a>
+            </li>
+ 
+            <hr class="sidebar-divider d-none d-md-block">
+
+            {{-- lien vers gestion des enquetes --}}
+            <li class="nav-item active">
+                <a class="nav-link" href={{ route('enquete.liste') }}>
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <span>Gérer les enquêtes</span>
                 </a>
             </li>
  

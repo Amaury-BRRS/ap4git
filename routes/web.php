@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\liste\UserController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\EtablissementController;
+use App\Http\Controllers\EnqueteController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -42,6 +43,31 @@ Route::get('/etablissement/{id}/edit', [EtablissementController::class, 'edit'])
 Route::put('/etablissement/{id}', [EtablissementController::class, 'update'])->name('superadmin.etablissement.update');
 Route::delete('/etablissement/{id}', [EtablissementController::class, 'destroy'])->name('superadmin.etablissement.destroy');
 
+// route gestion des enquetes 
+    Route::prefix('enquete')->name('superadmin.enquete.')->group(function () {
+        // route afficher les enquetes
+        // la route se construit comme ça => va chercher la methode listeEnquete de la classe EnqueteController dans le controller Enquete 
+        Route::get('lister',[EnqueteController::class,'index'])
+            -> name('index');
+            
+            // route suppression d'enquete
+            Route::delete('supprimer/{id}', [EnqueteController::class, 'destroy'])
+            -> where('id', '[0-9]+')->name('delete')->middleware('auth'); 
+
+            // route pour modifier, 1 pour afficher les données dans le formulaire et l'autre pour les modifier. 
+            Route::get('modifier/{id}', [EnqueteController::class, 'edit'])
+            -> name('edit')->middleware('auth');
+
+            Route::put('update/{id}', [EnqueteController::class, 'update']) 
+            -> name('update')->middleware('auth');
+
+            // route pour l'ajout, la première pour afficher les données et la deuxieme pour les modifier 
+            Route::get('ajouter', [EnqueteController::class,'ajouter'])
+            -> name('create')->middleware('auth','is_admin');
+
+            Route::post('store',[EnqueteController::class,'store']) 
+            -> name('store')->middleware('auth');
+    }); 
 
 require __DIR__.'/auth.php';
     
