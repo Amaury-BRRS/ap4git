@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
@@ -24,7 +25,7 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        return [
+       return [
             'prenom' => fake()->firstName(),
             'nom' => fake()->lastName(),
             'user_type' => fake()->randomElement(['salarié', 'administrateur', 'super_administrateur']),
@@ -42,6 +43,26 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    /**
+     * Create an admin user
+     */
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'type_user' => 'admin',
+        ]);
+    }
+
+    /**
+     * Create a super admin user
+     */
+    public function superAdmin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'type_user' => 'superadmin',
         ]);
     }
 

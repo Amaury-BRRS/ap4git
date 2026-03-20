@@ -15,9 +15,9 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user() && auth()->user()->est_admin) { 
-        return $next($request);
-    }
-     return redirect()->route('A MODIFIER POUR METTRE PAGE DE LOGIN OU PAGE ACCUEIL !!! ')->with('error', "Vous n'avez pas accès à cette section."); 
+        if (auth()->check() && auth()->user()->isAdmin()) { 
+            return $next($request);
+        }
+        return redirect()->route('accueil')->with('error', "Vous n'avez pas accès à cette section."); 
     }
 }
