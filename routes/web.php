@@ -38,6 +38,7 @@ Route::post('/formation', [FormationController::class, 'store'])->name('superadm
 Route::get('/formation/{id}/edit', [FormationController::class, 'edit'])->name('superadmin.formation.edit');
 Route::put('/formation/{id}', [FormationController::class, 'update'])->name('superadmin.formation.update');
 Route::delete('/formation/{id}', [FormationController::class, 'destroy'])->name('superadmin.formation.destroy');
+Route::get('/liaison', [FormationCOntroller::class,'liaison'])->name('superadmin.formation.liaison');
 
 require __DIR__.'/auth.php';
 
