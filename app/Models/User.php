@@ -19,9 +19,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'nom',
+        'prenom',
         'email',
         'password',
-        'user_type',
+        'type_user',
     ];
 
     /**
@@ -52,7 +53,7 @@ class User extends Authenticatable
      */
     public function isAdmin(): bool
     {
-        return $this->user_type === 'admin' || $this->user_type === 'superadmin';
+        return $this->type_user === 'admin' || $this->type_user === 'superadmin';
     }
 
     /**
@@ -60,7 +61,7 @@ class User extends Authenticatable
      */
     public function isSuperAdmin(): bool
     {
-        return $this->user_type === 'superadmin';
+        return $this->type_user === 'superadmin';
     }
 
     /**
@@ -68,16 +69,16 @@ class User extends Authenticatable
      */
     public function isUser(): bool
     {
-        return $this->user_type === 'user';
+        return $this->type_user === 'user';
     }
 
     public function echanges()
     {
-        return $this->user_type === 'admin' || $this->user_type === 'superadmin';
+        return $this->hasMany(Echange::class);
     }
    
     public function enquetes()
     {
-        return $this->hasMany(Enquete::class, 'id_user');
+        return $this->hasMany(Enquete::class, 'user_id');
     }
 }

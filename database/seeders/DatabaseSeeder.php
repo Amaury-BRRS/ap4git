@@ -36,9 +36,11 @@ class DatabaseSeeder extends Seeder
             
             User::factory(3)->create();
             Enquete::factory(10)->create(); 
+            Participant::factory(10)->create();
             Question::factory(10)->create();
             Choix::factory(5)->create();  
             FormulaireReponse::factory(10)->create(); 
+            Echange::factory(5)->create();
 
             // gère la relation entre deux tables --> ici on est dans une table pivot 
             $etabs = Etablissement::factory(10)->create();

@@ -12,11 +12,11 @@ class FormulaireReponse extends Model
 
     public function question()
     {
-        return $this->belongsTo(Question::class, 'id_question');
+        return $this->belongsTo(Question::class, 'question_id');
     }
 
     public function reponses()
     {
-        return $this->hasMany(Reponse::class, 'id_formulaire_reponse');
+        return $this->hasMany(Reponse::class, 'formulaire_reponse_id');
     }
 }

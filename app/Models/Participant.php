@@ -17,17 +17,17 @@ class Participant extends Model
     
     public function enquete()
     {
-        return $this->belongsToMany(enquete::class); 
+        return $this->belongsToMany(Enquete::class); 
     }
 
     public function reponses()
     {
-        return $this->hasMany(Reponse::class, 'id_participant');
+        return $this->hasMany(Reponse::class, 'participant_id');
     }
 
     public function echanges()
     {
-        return $this->hasMany(Echange::class, 'id_participant');
+        return $this->hasMany(Echange::class, 'participant_id');
     }
 
     protected $fillable = [

@@ -53,13 +53,13 @@
 
                         <!-- Type d'utilisateur -->
                         <div class="form-group">
-                            <label for="user_type">Type d'utilisateur</label>
+                            <label for="type_user">Type d'utilisateur</label>
                             <input 
                                 type="text" 
                                 class="form-control" 
-                                id="user_type" 
-                                name="user_type" 
-                                value="{{ ucfirst($user->user_type) }}"
+                                id="type_user" 
+                                name="type_user" 
+                                value="{{ ucfirst($user->type_user) }}"
                                 disabled
                             >
                             <small class="form-text text-muted">Non modifiable</small>
@@ -132,8 +132,8 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <strong>Type:</strong>
-                        <span class="badge badge-{{ $user->user_type === 'superadmin' ? 'danger' : ($user->user_type === 'admin' ? 'warning' : 'info') }}">
-                            {{ ucfirst($user->user_type) }}
+                        <span class="badge badge-{{ $user->type_user === 'superadmin' ? 'danger' : ($user->type_user === 'admin' ? 'warning' : 'info') }}">
+                            {{ ucfirst($user->type_user) }}
                         </span>
                     </div>
                     <div class="mb-3">

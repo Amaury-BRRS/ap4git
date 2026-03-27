@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\liste\UserController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\EtablissementController;
+use App\Http\Controllers\EchangeController;
 use App\Http\Controllers\FormationController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,5 +53,13 @@ Route::delete('/formation/{id}', [FormationController::class, 'destroy'])->name(
 Route::get('/liaison', [FormationController::class,'liaison'])->name('superadmin.formation.liaison');
 Route::delete('/liaison/{formation}/{etablissement}', [FormationController::class,'detach'])->name('superadmin.formation.detach');
 
+// routes echanges
+Route::middleware('auth')->group(function () {
+    Route::get('/echange.index', [EchangeController::class, 'index'])->name('superadmin.echange.index');
+    Route::post('/echanges', [EchangeController::class, 'store'])->name('superadmin.echange.store');
+    Route::get('/echange/{id}/edit', [EchangeController::class, 'edit'])->name('superadmin.echange.edit');
+    Route::put('/echange/{id}', [EchangeController::class, 'update'])->name('superadmin.echange.update');
+    Route::delete('/echange/{id}', [EchangeController::class, 'destroy'])->name('superadmin.echange.destroy');
+});
 require __DIR__.'/auth.php';
     
