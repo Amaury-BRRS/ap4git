@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\FormationRequest;
+use App\Http\Request\FormationRequest;
 use App\Models\Formation;
 use App\Models\Etablissement;
 
