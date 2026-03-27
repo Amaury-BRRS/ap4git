@@ -25,6 +25,8 @@ class Echange extends Model
         'type',
         'date_de_contact',
         'user_id',
+        'enquete_id',
+        'participant_id',
     ];
 
     protected function casts(): array

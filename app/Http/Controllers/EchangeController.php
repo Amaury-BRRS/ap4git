@@ -37,7 +37,7 @@ class EchangeController extends Controller
     {
         $data = $request->validate([
             'type' => ['required','string','max:255'],
-            'date_de_contact' => ['required','date'],
+            'date_de_contact' => ['required','date','after:1900-01-01'],
             'user_id' => ['required','exists:users,id'],
             'enquete_id' => ['required','exists:enquetes,id'],
             'participant_id' => ['required','exists:participants,id'],
@@ -74,7 +74,7 @@ class EchangeController extends Controller
     {
         $data = $request->validate([
             'type' => ['required','string','max:255'],
-            'date_de_contact' => ['required','date'],
+            'date_de_contact' => ['required','date','after:1900-01-01'],
             'user_id' => ['required','exists:users,id'],
             'enquete_id' => ['required','exists:enquetes,id'],
             'participant_id' => ['required','exists:participants,id'],
