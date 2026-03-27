@@ -71,7 +71,18 @@ class FormationController extends Controller
 
     public function liaison()
     {
-        $formations = Formation::with('etablissement')->get();
+        $formations = Formation::with('etablissement')->whereHas('etablissement')->get();
         return view('superadmin.formation.liaison', compact('formations'));
+    }
+
+    public function detach($formationId, $etablissementId)
+    {
+        try {
+        $formation = Formation::findOrFail($formationId);
+        $formation->etablissement()->detach($etablissementId);
+        return redirect()->route('superadmin.formation.liaison')->with('success', 'L\'établissement a été détacher avec succès.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Une erreur est survenue lors du détachement de l\'entreprise.');
+        }
     }
 }

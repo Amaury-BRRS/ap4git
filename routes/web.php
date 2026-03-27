@@ -49,7 +49,8 @@ Route::post('/formation', [FormationController::class, 'store'])->name('superadm
 Route::get('/formation/{id}/edit', [FormationController::class, 'edit'])->name('superadmin.formation.edit');
 Route::put('/formation/{id}', [FormationController::class, 'update'])->name('superadmin.formation.update');
 Route::delete('/formation/{id}', [FormationController::class, 'destroy'])->name('superadmin.formation.destroy');
-Route::get('/liaison', [FormationCOntroller::class,'liaison'])->name('superadmin.formation.liaison');
+Route::get('/liaison', [FormationController::class,'liaison'])->name('superadmin.formation.liaison');
+Route::delete('/liaison/{formation}/{etablissement}', [FormationController::class,'detach'])->name('superadmin.formation.detach');
 
 require __DIR__.'/auth.php';
     
