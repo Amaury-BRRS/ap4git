@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FormationRequest;
+use APp\Models\Etablissement;
 use App\Models\Formation;
 
 class FormationController extends Controller
