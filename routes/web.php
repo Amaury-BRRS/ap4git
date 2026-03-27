@@ -5,6 +5,7 @@ use App\Http\Controllers\liste\UserController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\EtablissementController;
 use App\Http\Controllers\EchangeController;
+use App\Http\Controllers\FormationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -43,6 +44,14 @@ Route::get('/etablissement/{id}/edit', [EtablissementController::class, 'edit'])
 Route::put('/etablissement/{id}', [EtablissementController::class, 'update'])->name('superadmin.etablissement.update');
 Route::delete('/etablissement/{id}', [EtablissementController::class, 'destroy'])->name('superadmin.etablissement.destroy');
 
+Route::get('/listeformation', [FormationController::class, 'index'])->name('superadmin.formation.index');
+Route::get('/formation/create', [FormationController::class, 'create'])->name('superadmin.formation.create');
+Route::post('/formation', [FormationController::class, 'store'])->name('superadmin.formation.store');
+Route::get('/formation/{id}/edit', [FormationController::class, 'edit'])->name('superadmin.formation.edit');
+Route::put('/formation/{id}', [FormationController::class, 'update'])->name('superadmin.formation.update');
+Route::delete('/formation/{id}', [FormationController::class, 'destroy'])->name('superadmin.formation.destroy');
+Route::get('/liaison', [FormationController::class,'liaison'])->name('superadmin.formation.liaison');
+Route::delete('/liaison/{formation}/{etablissement}', [FormationController::class,'detach'])->name('superadmin.formation.detach');
 
 // routes echanges
 Route::middleware('auth')->group(function () {
