@@ -12,7 +12,7 @@ class Enquete extends Model
 
     public function questions()
     {
-        return $this->HasMany(Question::class); 
+        return $this->hasMany(Question::class); 
     }
 
     // réponse au sens où on a répondu à l'enquête en générale, pas aux questions 
@@ -33,12 +33,7 @@ class Enquete extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_user');
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     protected $fillable = [

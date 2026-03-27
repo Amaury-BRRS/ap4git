@@ -13,12 +13,12 @@ class Echange extends Model
 
     public function enquete()
     {
-        return $this->belongsTo(Enquete::class, 'id_enquete');
+        return $this->belongsTo(Enquete::class, 'enquete_id');
     }
 
     public function participant()
     {
-        return $this->belongsTo(Participant::class, 'id_participant');
+        return $this->belongsTo(Participant::class, 'participant_id');
     }
   
     protected $fillable = [

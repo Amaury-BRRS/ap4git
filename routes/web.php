@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\liste\UserController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\EtablissementController;
+use App\Http\Controllers\EchangeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -43,5 +44,13 @@ Route::put('/etablissement/{id}', [EtablissementController::class, 'update'])->n
 Route::delete('/etablissement/{id}', [EtablissementController::class, 'destroy'])->name('superadmin.etablissement.destroy');
 
 
+// routes echanges
+Route::middleware('auth')->group(function () {
+    Route::get('/echange.index', [EchangeController::class, 'index'])->name('superadmin.echange.index');
+    Route::post('/echanges', [EchangeController::class, 'store'])->name('superadmin.echange.store');
+    Route::get('/echange/{id}/edit', [EchangeController::class, 'edit'])->name('superadmin.echange.edit');
+    Route::put('/echange/{id}/update', [EchangeController::class, 'update'])->name('superadmin.echange.update');
+    Route::delete('/echange/{id}/delete', [EchangeController::class, 'destroy'])->name('superadmin.echange.destroy');
+});
 require __DIR__.'/auth.php';
     

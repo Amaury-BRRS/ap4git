@@ -56,17 +56,32 @@
             <!-- Nav Item - Utilities Collapse Menu -->
                 @if (auth()->user()->isAdmin() || auth()->user()->isSuperAdmin())
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEnquetes"
+                    aria-expanded="true" aria-controls="collapseEnquetes">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>liste des enquêtes</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                <div id="collapseEnquetes" class="collapse" aria-labelledby="headingEnquetes"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Les enquêtes :</h6>
                         <a class="collapse-item" href="enquete_en_cours">enquete en cours</a>
                         <a class="collapse-item" href="enquetes_terminées">enquetes terminées</a>
+            </li>
+             @endif
+
+              @if (auth()->user()->isAdmin() || auth()->user()->isSuperAdmin())
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEchanges"
+                    aria-expanded="true" aria-controls="collapseEchanges">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Les échanges</span>
+                </a>
+                <div id="collapseEchanges" class="collapse" aria-labelledby="headingEchanges"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Les échanges :</h6>
+                        <a class="collapse-item" href="{{ route('superadmin.echange.index') }}">Liste des échanges</a>
             </li>
              @endif
 

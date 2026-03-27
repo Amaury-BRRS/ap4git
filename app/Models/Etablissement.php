@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Etablissement extends Model
 {
-    /** @use HasFactory<\Database\Factories\QuestionFactory> */
+    /** @use HasFactory<\Database\Factories\EtablissementFactory> */
     use HasFactory;
 
     public function formations()

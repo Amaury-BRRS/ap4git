@@ -12,8 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Enlever les anciennes colonnes booléennes
-            $table->dropColumn(['is_admin', 'is_superadmin']);
+            // Enlever les anciennes colonnes booléennes si elles existent
+            $columnsToDrop = [];
+            if (Schema::hasColumn('users', 'is_admin')) {
+                $columnsToDrop[] = 'is_admin';
+            }
+            if (Schema::hasColumn('users', 'is_superadmin')) {
+                $columnsToDrop[] = 'is_superadmin';
+            }
+            if (!empty($columnsToDrop)) {
+                $table->dropColumn($columnsToDrop);
+            }
             
             // Modifier user_type en enum
             $table->enum('type_user', ['user', 'admin', 'superadmin'])

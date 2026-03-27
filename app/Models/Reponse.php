@@ -16,12 +16,12 @@ class Reponse extends Model
 
     public function formulaireReponse()
     {
-        return $this->belongsTo(FormulaireReponse::class, 'id_formulaire_reponse');
+        return $this->belongsTo(FormulaireReponse::class, 'formulaire_reponse_id');
     }
 
     public function participant()
     {
-        return $this->belongsTo(Participant::class, 'id_participant');
+        return $this->belongsTo(Participant::class, 'participant_id');
     }
 
     protected $fillable = [
