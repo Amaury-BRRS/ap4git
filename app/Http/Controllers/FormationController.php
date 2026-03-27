@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FormationRequest;
-use APp\Models\Etablissement;
 use App\Models\Formation;
+use App\Models\Etablissement;
 
 class FormationController extends Controller
 {
@@ -29,6 +29,7 @@ class FormationController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Une erreur est survenue lors de la création de la formation.');
         }
+        
     }
 
     public function edit($id)

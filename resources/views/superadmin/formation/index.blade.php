@@ -7,6 +7,7 @@
         <thead>
             <tr>
                 <th>Nom de la formation</th>
+                <th>Etablissement effectuant la formation</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -14,6 +15,11 @@
             @foreach($formations as $formation)
             <tr>
                 <td>{{ $formation->libelle }}</td>
+                <td>
+                    @foreach($formation->etablissement as $etablissement)
+                        {{ $etablissement->nom }} @if(!$loop->last), @endif
+                    @endforeach
+                </td>
                 <td>
                     <a href="{{ route('superadmin.formation.edit', $formation->id) }}" class="btn btn-primary">Modifier</a>
                     <form action="{{ route('superadmin.formation.destroy', $formation->id) }}" method="POST" style="display: inline-block;"

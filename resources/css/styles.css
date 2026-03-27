@@ -91,7 +91,7 @@
     border: 1px solid #f5c6cb;
 }
 
-/* Style pour la liste des formations */
+/* Style pour la liste des formation */
 .table-formation {
     border-collapse: collapse;
     width: 98%;
@@ -115,7 +115,7 @@
     background-color: #ddd;
 }
 
-/* Style pour le formulaire de création de formation */
+/* Style pour le formulaire de création d'une formation */
 .create-formation {
     margin: 20px;
     text-align: center;
@@ -133,7 +133,7 @@
     padding: 8px;
 }
 
-/* Style pour la page d'édition de formation */
+/* Style pour la page d'édition d'une formation */
 .edit-formation {
     margin: 20px;
     text-align: center;
