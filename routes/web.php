@@ -53,13 +53,13 @@ Route::delete('/formation/{id}', [FormationController::class, 'destroy'])->name(
 Route::get('/liaison', [FormationController::class,'liaison'])->name('superadmin.formation.liaison');
 Route::delete('/liaison/{formation}/{etablissement}', [FormationController::class,'detach'])->name('superadmin.formation.detach');
 
-// routes echanges
+// Routes pour la gestion des échanges (CRUD complet)
 Route::middleware('auth')->group(function () {
-    Route::get('/echange.index', [EchangeController::class, 'index'])->name('superadmin.echange.index');
-    Route::post('/echanges', [EchangeController::class, 'store'])->name('superadmin.echange.store');
-    Route::get('/echange/{id}/edit', [EchangeController::class, 'edit'])->name('superadmin.echange.edit');
-    Route::put('/echange/{id}', [EchangeController::class, 'update'])->name('superadmin.echange.update');
-    Route::delete('/echange/{id}', [EchangeController::class, 'destroy'])->name('superadmin.echange.destroy');
+    Route::get('/echanges', [EchangeController::class, 'index'])->name('superadmin.echange.index'); // Liste des échanges
+    Route::post('/echanges', [EchangeController::class, 'store'])->name('superadmin.echange.store'); // Créer un échange
+    Route::get('/echange/{id}/edit', [EchangeController::class, 'edit'])->name('superadmin.echange.edit'); // Formulaire d'édition
+    Route::put('/echange/{id}', [EchangeController::class, 'update'])->name('superadmin.echange.update'); // Mettre à jour
+    Route::delete('/echange/{id}', [EchangeController::class, 'destroy'])->name('superadmin.echange.destroy'); // Supprimer
 });
 require __DIR__.'/auth.php';
     

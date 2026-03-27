@@ -8,31 +8,33 @@ use App\Models\Participant;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
+ * Factory pour générer des données fictives d'échanges
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Echange>
  */
 class EchangeFactory extends Factory
 {
     /**
-     * Define the model's default state.
+     * Définition des attributs par défaut pour un échange fictif
      *
      * @return array<string, mixed>
      */
     public function definition(): array
     {
         return [
-            // type d'échange (type de contact)
+            // Type d'échange (type de contact)
             'type' => fake()->randomElement(['email', 'téléphone', 'visio']),
 
-            // date du contact
+            // Date du contact (date aléatoire)
             'date_de_contact' => fake()->date(),
 
-            // clé étrangère vers users.id
-            // ici on crée un user fictif si aucun n'existe encore,
-            // ou on en réutilise un selon l'appel de la factory
+            // Clé étrangère vers users.id (utilisateur qui fait l'échange)
             'user_id' => User::factory(),
-            'enquete_id'=>Enquete::InRandomOrder()->first()->id, 
-            'participant_id'=>Participant::InRandomOrder()->first()->id, 
 
+            // Clé étrangère vers enquetes.id (enquête concernée)
+            'enquete_id'=>Enquete::InRandomOrder()->first()->id, 
+
+            // Clé étrangère vers participants.id (participant concerné)
+            'participant_id'=>Participant::InRandomOrder()->first()->id, 
         ];
     }
 }

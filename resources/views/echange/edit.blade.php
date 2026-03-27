@@ -2,10 +2,12 @@
 
 @section('content')
 <div class="container-fluid">
+    <!-- Titre de la page d'édition -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Modifier l'échange</h1>
     </div>
 
+    <!-- Messages de succès/erreur -->
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
@@ -17,15 +19,16 @@
         <div class="col-lg-6">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Modifier l'échange</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Modifier l'échange #{{ $echange->id }}</h6>
                 </div>
                 <div class="card-body">
+                    <!-- Formulaire d'édition pré-rempli -->
                     <form action="{{ route('superadmin.echange.update', $echange->id) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
                             <label for="type">Type</label>
-                            <input id="type" name="type" type="text" class="form-control" value="{{ $echange->type }}" required>
+                            <input id="type" name="type" type="text" class="form-control" value="{{ $echange->type }}" required placeholder="ex: email, téléphone">
                         </div>
 
                         <div class="form-group">
@@ -36,7 +39,7 @@
                         <div class="form-group">
                             <label for="user_id">Utilisateur</label>
                             <select id="user_id" name="user_id" class="form-control" required>
-                                <option value="">Sélectionner</option>
+                                <option value="">Sélectionner un utilisateur</option>
                                 @foreach($users ?? [] as $u)
                                     <option value="{{ $u->id }}" {{ $echange->user_id == $u->id ? 'selected' : '' }}>{{ $u->nom }} {{ $u->prenom }}</option>
                                 @endforeach
@@ -46,7 +49,7 @@
                         <div class="form-group">
                             <label for="enquete_id">Enquête</label>
                             <select id="enquete_id" name="enquete_id" class="form-control" required>
-                                <option value="">Sélectionner</option>
+                                <option value="">Sélectionner une enquête</option>
                                 @foreach($enquetes ?? [] as $enquete)
                                     <option value="{{ $enquete->id }}" {{ $echange->enquete_id == $enquete->id ? 'selected' : '' }}>{{ $enquete->titre }}</option>
                                 @endforeach
@@ -56,7 +59,7 @@
                         <div class="form-group">
                             <label for="participant_id">Participant</label>
                             <select id="participant_id" name="participant_id" class="form-control" required>
-                                <option value="">Sélectionner</option>
+                                <option value="">Sélectionner un participant</option>
                                 @foreach($participants ?? [] as $p)
                                     <option value="{{ $p->id }}" {{ $echange->participant_id == $p->id ? 'selected' : '' }}>{{ $p->nom }} {{ $p->prenom }}</option>
                                 @endforeach

@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
             Question::factory(10)->create();
             Choix::factory(5)->create();  
             FormulaireReponse::factory(10)->create(); 
+            // Créer des échanges (dépend de users, enquetes, participants)
             Echange::factory(5)->create();
 
             // gère la relation entre deux tables --> ici on est dans une table pivot 
