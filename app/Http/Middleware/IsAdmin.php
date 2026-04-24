@@ -15,7 +15,7 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->isAdmin()) { 
+        if (auth()->user() && auth()->user()->user_type === 'administrateur') { 
             return $next($request);
         }
         return redirect()->route('accueil')->with('error', "Vous n'avez pas accès à cette section."); 
