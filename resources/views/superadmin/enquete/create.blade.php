@@ -1,6 +1,7 @@
-@extends('superadmin.templateSA')
+@extends('template')
 @section('content')
 
+<h3>Ajout d'une enquête</h3>
 <div class="form-enquete">
     <form method="POST" action="{{ route('superadmin.enquete.store') }}">
         @if ($errors->any())

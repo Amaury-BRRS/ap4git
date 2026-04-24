@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Enquete;
+use App\Http\Requests\EnqueteRequest;
 
 class EnqueteController extends Controller
 {
@@ -47,7 +48,6 @@ class EnqueteController extends Controller
             $enquete->date_fin = $request->input('date_fin');
             $enquete->user_id = auth()->id();  
             $enquete->statut = 'en cours';   
-            $dd; 
             $enquete->save();
 
             return redirect()->route('superadmin.enquete.index')
@@ -75,7 +75,7 @@ class EnqueteController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
         $enquete = Enquete::find($id); 
         return view('superadmin.enquete.edit', compact('enquete')); 
@@ -84,22 +84,24 @@ class EnqueteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EnqueteRequest $request, $id)
     {
-        try{
+        try
+        {
             $enquete = Enquete::find($id); 
             $enquete ->titre = $request->input('titre'); 
             $enquete -> description = $request->input('description'); 
             $enquete -> public_cible = $request->input('public_cible'); 
             $enquete -> date_debut = $request->input('date_debut'); 
             $enquete -> date_fin = $request->input('date_fin'); 
-            $enquete -> user_id = $request->input('user_id'); 
+            $enquete -> user_id = auth()->id();  
+            // dd($enquete); 
             $enquete -> save(); 
-            return redirect()->route('superadmin.enquete.edit')->with('succes', 'Enquete modifiée avec succès'); 
-        }
+            return redirect()->route('superadmin.enquete.index')->with('succes', 'Enquete modifiée avec succès'); 
+            }
         catch(\Exception $e)
         {
-            return redirect()->route('superadmin.enquete.edit')->with('error', 'La modification n\'a pas aboutie'); 
+            return redirect()->route('superadmin.enquete.index')->with('error', 'La modification n\'a pas aboutie'); 
         }
     }
 

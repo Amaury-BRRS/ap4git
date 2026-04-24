@@ -23,11 +23,9 @@ class IsSuperAdmin
     public function handle(Request $request, Closure $next): Response
     {
         // On récupère l'utilisateur actuellement connecté via le helper auth().
-        $user = auth()->user();
-
         // Si un utilisateur est connecté ET qu'il possède le rôle de super administrateur,
         // on le laisse continuer vers la prochaine étape du pipeline (autres middlewares ou contrôleur).
-        if ($user && $user->est_super_admin) {
+        if (auth()->user() && (auth()->user()->user_type === 'super_administrateur' )) { 
             return $next($request);
         }
 

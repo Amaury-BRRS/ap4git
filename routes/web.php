@@ -32,9 +32,11 @@ Route::middleware('auth')->prefix('liste_utilisateurs')->group(function () {
     Route::delete('/user/{id}' , [UserController::class, 'destroy'])->name('liste_utilisateurs.destroy');
     Route::patch('/user/{id}' , [UserController::class, 'updateRole'])->name('liste_utilisateurs.update_role');
 });
-Route::middleware('est_super_admin')->group(function () {
+
+Route::middleware('is_super_admin')->group(function () {
 
 });
+
 Route::get('/liste', [EtablissementController::class, 'index'])->name('superadmin.etablissement.index');
 Route::get('/etablissement/create', [EtablissementController::class, 'create'])->name('superadmin.etablissement.create');
 Route::post('/etablissement', [EtablissementController::class, 'store'])->name('superadmin.etablissement.store');
@@ -52,30 +54,21 @@ Route::delete('/etablissement/{id}', [EtablissementController::class, 'destroy']
             
             // route suppression d'enquete
             Route::delete('supprimer/{id}', [EnqueteController::class, 'destroy'])
-            -> where('id', '[0-9]+')->name('delete')->middleware('auth'); 
-            // -> where('id', '[0-9]+')->name('delete'); 
-
+            -> where('id', '[0-9]+')->name('delete')->middleware(['auth', 'is_admin', 'is_super_admin']); 
 
             // route pour modifier, 1 pour afficher les données dans le formulaire et l'autre pour les modifier. 
             Route::get('modifier/{id}', [EnqueteController::class, 'edit'])
-            -> name('edit')->middleware('auth');
-            // -> name('edit');
-
+            -> name('edit')->middleware(['auth', 'is_admin', 'is_super_admin']); 
 
             Route::put('update/{id}', [EnqueteController::class, 'update']) 
-            -> name('update')->middleware('auth');
-            // -> name('update');
-
+            -> name('update')->middleware(['auth', 'is_admin', 'is_super_admin']); 
 
             // route pour l'ajout, la première pour afficher les données et la deuxieme pour les modifier 
             Route::get('ajouter', [EnqueteController::class,'create'])
-            -> name('create')->middleware('auth','is_admin');
-            // -> name('create');
-
+            -> name('create')->middleware(['auth', 'is_admin', 'is_super_admin']); 
 
             Route::post('store',[EnqueteController::class,'store']) 
-            -> name('store')->middleware('auth');
-            // -> name('store');
+            -> name('store')->middleware(['auth', 'is_admin', 'is_super_admin']); 
 
     }); 
 
