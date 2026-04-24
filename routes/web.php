@@ -37,9 +37,10 @@ Route::middleware('auth')->prefix('liste_utilisateurs')->group(function () {
     Route::delete('/user/{id}' , [UserController::class, 'destroy'])->name('liste_utilisateurs.destroy');
     Route::patch('/user/{id}' , [UserController::class, 'updateRole'])->name('liste_utilisateurs.update_role');
 });
-Route::middleware('est_super_admin')->group(function () {
 
+Route::middleware('is_admin')->group(function () {
 });
+
 Route::get('/liste', [EtablissementController::class, 'index'])->name('superadmin.etablissement.index');
 Route::get('/etablissement/create', [EtablissementController::class, 'create'])->name('superadmin.etablissement.create');
 Route::post('/etablissement', [EtablissementController::class, 'store'])->name('superadmin.etablissement.store');
