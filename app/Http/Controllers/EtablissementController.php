@@ -14,6 +14,7 @@ class EtablissementController extends Controller
         */
         public function index()
         {
+            
             $etablissements = Etablissement::all();
             return view('superadmin.etablissement.index', compact('etablissements'));
         }

@@ -13,7 +13,6 @@
             <th>Code Postal</th>
             <th>Email</th>
             <th>Numéro de téléphone</th>
-            <th>Formations proposées</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -26,10 +25,6 @@
             <td>{{ $etablissement->code_postal }}</td>
             <td>{{ $etablissement->email }}</td>
             <td>{{ $etablissement->telephone }}</td>
-            <td>
-                @foreach($etablissement->formation as $formation)
-                    {{ $formation->libelle }} @if(!$loop->last), @endif
-                @endforeach
             <td>
                 <a href="{{ route('superadmin.etablissement.edit', $etablissement->id) }}" class="btn btn-primary">Modifier</a>
                 <form action="{{ route('superadmin.etablissement.destroy', $etablissement->id) }}" method="POST" style="display: inline-block;"
