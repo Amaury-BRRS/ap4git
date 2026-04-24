@@ -22,28 +22,45 @@ class EnqueteController extends Controller
      */
     public function create()
     {
-        return view('superadmin.enquete.ajouter'); 
+        return view('superadmin.enquete.create'); 
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(EnqueteRequest $request)
+    public function store(Request $request)
     {
-        try{
-            $enquete = new Enquete(); 
-            $enquete -> titre = $request->input('titre'); 
-            $enquete -> description = $request->input('description'); 
-            $enquete -> public_cible = $request->input('public_cible'); 
-            $enquete -> date_debut = $request->input('date_debut'); 
-            $enquete -> date_fin = $request->input('date_fin'); 
-            $enquete -> user_id = $request->input('user_id'); 
-            $enquete -> save(); 
-            return redirect()->route('superadmin.enquete.index')->with('success', 'L\'enquête a été ajoutée avec succès'); 
-        }
-        catch(\Exception $e)
-        {
-            return redirect()->route('superadmin.enquete.index')->with('error', 'Echec de la création de l\'enquête'); 
+        try {
+            $request->validate([
+                'titre'        => 'required|string|max:255',
+                'description'  => 'required|string',
+                'public_cible' => 'required|integer',
+                'date_debut'   => 'required|date',
+                'date_fin'     => 'required|date|after:date_debut',
+            ]);
+
+            $enquete = new Enquete();
+            $enquete->titre = $request->input('titre');
+            $enquete->description  = $request->input('description');
+            $enquete->public_cible = $request->input('public_cible');
+            $enquete->date_debut   = $request->input('date_debut');
+            $enquete->date_fin = $request->input('date_fin');
+            $enquete->user_id = auth()->id();  
+            $enquete->statut = 'en cours';   
+            $dd; 
+            $enquete->save();
+
+            return redirect()->route('superadmin.enquete.index')
+                            ->with('success', 'L\'enquête a été ajoutée avec succès');
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->back()->withErrors($e->errors())->withInput();
+
+        } catch (\Exception $e) {
+            report($e); // log dans storage/logs/laravel.log
+            return redirect()->back()
+                            ->with('error', 'Echec de la création de l\'enquête')
+                            ->withInput();
         }
     }
 

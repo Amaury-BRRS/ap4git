@@ -53,20 +53,30 @@ Route::delete('/etablissement/{id}', [EtablissementController::class, 'destroy']
             // route suppression d'enquete
             Route::delete('supprimer/{id}', [EnqueteController::class, 'destroy'])
             -> where('id', '[0-9]+')->name('delete')->middleware('auth'); 
+            // -> where('id', '[0-9]+')->name('delete'); 
+
 
             // route pour modifier, 1 pour afficher les données dans le formulaire et l'autre pour les modifier. 
             Route::get('modifier/{id}', [EnqueteController::class, 'edit'])
             -> name('edit')->middleware('auth');
+            // -> name('edit');
+
 
             Route::put('update/{id}', [EnqueteController::class, 'update']) 
             -> name('update')->middleware('auth');
+            // -> name('update');
+
 
             // route pour l'ajout, la première pour afficher les données et la deuxieme pour les modifier 
-            Route::get('ajouter', [EnqueteController::class,'ajouter'])
+            Route::get('ajouter', [EnqueteController::class,'create'])
             -> name('create')->middleware('auth','is_admin');
+            // -> name('create');
+
 
             Route::post('store',[EnqueteController::class,'store']) 
             -> name('store')->middleware('auth');
+            // -> name('store');
+
     }); 
 
 require __DIR__.'/auth.php';

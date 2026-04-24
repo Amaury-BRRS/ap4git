@@ -74,8 +74,8 @@
 
             {{-- lien vers gestion des enquetes --}}
             <li class="nav-item active">
-                <a class="nav-link" href={{ route('enquete.liste') }}>
-                    <i class="fa-solid fa-clipboard-list"></i>
+                <a class="nav-link" href={{ route('superadmin.enquete.index') }}>
+                    <i class="fas fa-clipboard-list"></i>
                     <span>Gérer les enquêtes</span>
                 </a>
             </li>
