@@ -12,7 +12,7 @@ bleu secondaire foncé : 001d3d
 
 /* gros bloc sur le coté gauche du site */
 #accordionSidebar{
-    background: linear-gradient(180deg, #00a6a9, #007e97) !important;
+    background: linear-gradient(180deg, #007e97, #f18628) !important;
 }
 
 /*  bouton loupe de la barre de recherche */

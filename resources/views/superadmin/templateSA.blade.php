@@ -40,7 +40,7 @@
             <a class="sidebar-brand d-flex align-items-center justify-content-center" style="padding-top: 15px !important; height: auto;">
  
                 <div class="sidebar-brand-icon rotate-n-15"></div>
-                <div class="sidebar-brand-text mx-3"><img class="logo" src="#" width="50%" height="50%">Excellence Pro Franche-Comté<br></div>
+                <div class="sidebar-brand-text mx-3"><img class="logo" src="{{ asset('/image/Excellence_Pro_Franche-Comte_logotype_hauteur_blanc.webp') }}" width="50%" height="50%">Excellence Pro Franche-Comté<br></div>
             </a>
  
             <hr class="sidebar-divider my-0">
@@ -169,7 +169,7 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Clicker sur "Déconnection" si vous êtes près a vous déconnecter de votre sessions.</div>
+                <div class="modal-body">Cliquer sur "Déconnection" si vous êtes près a vous déconnecter de votre sessions.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
                     <a class="btn btn-primary" href="login.html">Déconnection</a>
