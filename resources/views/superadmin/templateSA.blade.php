@@ -21,7 +21,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('/') }}sbadmin2/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="{{ asset('/') }}sbadmin2/css/sbadminTemplate.css" rel="stylesheet">
-    @vite('resources/css/styles.css')
+    {{-- @vite('resources/css/styles.css') --}}
     
 
     {{-- envoie des styles --}}
@@ -78,8 +78,18 @@
                     <span>Voir les liaison</span>
                 </a>
             </li>
+
+            {{-- lien vers gestion des enquetes --}}
+            <li class="nav-item active">
+                <a class="nav-link" href={{ route('superadmin.enquete.index') }}>
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Gérer les enquêtes</span>
+                </a>
+            </li>
  
             <hr class="sidebar-divider d-none d-md-block">            
+ 
+            <hr class="sidebar-divider d-none d-md-block">
  
             <li class="nav-item active">
                 <a class="nav-link" href="#">

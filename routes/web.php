@@ -6,6 +6,7 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\EtablissementController;
 use App\Http\Controllers\EchangeController;
 use App\Http\Controllers\FormationController;
+use App\Http\Controllers\EnqueteController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -44,7 +45,8 @@ Route::middleware('is_super_admin')->group(function () {
 Route::middleware('is_admin')->group(function () {
 });
 
-// Route::get('/liste', [EtablissementController::class, 'index'])->name('superadmin.etablissement.index');
+
+Route::get('/liste', [EtablissementController::class, 'index'])->name('superadmin.etablissement.index');
 Route::get('/etablissement/create', [EtablissementController::class, 'create'])->name('superadmin.etablissement.create');
 Route::post('/etablissement', [EtablissementController::class, 'store'])->name('superadmin.etablissement.store');
 Route::get('/index', [SuperAdminController::class, 'index'])->name('superadmin.index');
@@ -52,6 +54,16 @@ Route::get('/etablissement/{id}/edit', [EtablissementController::class, 'edit'])
 Route::put('/etablissement/{id}', [EtablissementController::class, 'update'])->name('superadmin.etablissement.update');
 Route::delete('/etablissement/{id}', [EtablissementController::class, 'destroy'])->name('superadmin.etablissement.destroy');
 
+// route gestion des enquetes 
+    Route::prefix('enquete')->name('superadmin.enquete.')->group(function () {
+        // route afficher les enquetes
+        // la route se construit comme ça => va chercher la methode listeEnquete de la classe EnqueteController dans le controller Enquete 
+        Route::get('lister',[EnqueteController::class,'index'])
+            -> name('index');
+            
+            // route suppression d'enquete
+            Route::delete('supprimer/{id}', [EnqueteController::class, 'destroy'])
+            -> where('id', '[0-9]+')->name('delete')->middleware(['auth', 'is_admin', 'is_super_admin']); 
 Route::get('/listeformation', [FormationController::class, 'index'])->name('superadmin.formation.index');
 Route::get('/formation/create', [FormationController::class, 'create'])->name('superadmin.formation.create');
 Route::post('/formation', [FormationController::class, 'store'])->name('superadmin.formation.store');
@@ -60,6 +72,22 @@ Route::put('/formation/{id}', [FormationController::class, 'update'])->name('sup
 Route::delete('/formation/{id}', [FormationController::class, 'destroy'])->name('superadmin.formation.destroy');
 Route::get('/liaison', [FormationController::class,'liaison'])->name('superadmin.formation.liaison');
 Route::delete('/liaison/{formation}/{etablissement}', [FormationController::class,'detach'])->name('superadmin.formation.detach');
+
+            // route pour modifier, 1 pour afficher les données dans le formulaire et l'autre pour les modifier. 
+            Route::get('modifier/{id}', [EnqueteController::class, 'edit'])
+            -> name('edit')->middleware(['auth', 'is_admin', 'is_super_admin']); 
+
+            Route::put('update/{id}', [EnqueteController::class, 'update']) 
+            -> name('update')->middleware(['auth', 'is_admin', 'is_super_admin']); 
+
+            // route pour l'ajout, la première pour afficher les données et la deuxieme pour les modifier 
+            Route::get('ajouter', [EnqueteController::class,'create'])
+            -> name('create')->middleware(['auth', 'is_admin', 'is_super_admin']); 
+
+            Route::post('store',[EnqueteController::class,'store']) 
+            -> name('store')->middleware(['auth', 'is_admin', 'is_super_admin']); 
+
+    }); 
 
 // routes echanges
 Route::middleware('auth')->group(function () {

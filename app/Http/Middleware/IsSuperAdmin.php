@@ -25,7 +25,7 @@ class IsSuperAdmin
         // On récupère l'utilisateur actuellement connecté via le helper auth().
         // Si un utilisateur est connecté ET qu'il possède le rôle de super administrateur,
         // on le laisse continuer vers la prochaine étape du pipeline (autres middlewares ou contrôleur).
-         if (auth()->user() && auth()->user()->user_type === 'super_administrateur') { 
+        if (auth()->user() && (auth()->user()->user_type === 'super_administrateur' )) { 
             return $next($request);
         }
 
