@@ -45,6 +45,7 @@
                             <a class="collapse-item" href="{{ route('liste_utilisateurs.user') }}">Liste des users</a>
                             <a class="collapse-item" href="{{ route('liste_utilisateurs.admin') }}">Liste des admin</a>
                             <a class="collapse-item" href="{{ route('liste_utilisateurs.super_admin') }}">Liste des super admin</a>
+                            <a class="collapse-item" href="{{ route('register') }}">Créer un utilisateur</a>
                         @else
                             <a class="collapse-item" href="{{ route('liste_utilisateurs.user') }}">Liste des users</a>
                         @endif
