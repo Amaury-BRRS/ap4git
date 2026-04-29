@@ -24,8 +24,10 @@ return new class extends Migration
                 $table->dropColumn($columnsToDrop);
             }
             
-            // Modifier type_user en string (VARCHAR)
-            $table->string('type_user', 255)->default('salarié')->change();
+            // Modifier user_type en enum
+            $table->enum('type_user', ['user', 'admin', 'superadmin'])
+                ->default('user')
+                ->change();
         });
     }
 

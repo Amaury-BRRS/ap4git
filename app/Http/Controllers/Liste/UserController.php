@@ -22,7 +22,7 @@ class UserController extends Controller
      */
         public function admin()
         {
-            $users = User::where('type_user', 'administrateur')->get();
+            $users = User::where('type_user', 'admin')->get();
             return view('liste_utilisateurs.admin', compact('users'));
         }
 
@@ -31,7 +31,7 @@ class UserController extends Controller
      */
         public function superadmin()
         {
-            $users = User::where('type_user', 'super_administrateur')->get();
+            $users = User::where('type_user', 'superadmin')->get();
             return view('liste_utilisateurs.superadmin', compact('users'));
         }
 
@@ -93,11 +93,11 @@ class UserController extends Controller
 
         // Mettre à jour les rôles de l'utilisateur
         if ($request->is_superadmin) {
-            $user->type_user = 'super_administrateur';
+            $user->type_user = 'superadmin';
         } elseif ($request->is_admin) {
-            $user->type_user = 'administrateur';
+            $user->type_user = 'admin';
         } else {
-            $user->type_user = 'salarié';
+            $user->type_user = 'user';
         }
         $user->save();
 

@@ -132,7 +132,7 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <strong>Type:</strong>
-                        <span class="badge badge-{{ $user->type_user === 'super_administrateur' ? 'danger' : ($user->type_user === 'administrateur' ? 'warning' : 'info') }}">
+                        <span class="badge badge-{{ $user->type_user === 'superadmin' ? 'danger' : ($user->type_user === 'admin' ? 'warning' : 'info') }}">
                             {{ ucfirst($user->type_user) }}
                         </span>
                     </div>
