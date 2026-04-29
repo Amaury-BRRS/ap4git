@@ -53,6 +53,15 @@ Route::get('/etablissement/{id}/edit', [EtablissementController::class, 'edit'])
 Route::put('/etablissement/{id}', [EtablissementController::class, 'update'])->name('superadmin.etablissement.update');
 Route::delete('/etablissement/{id}', [EtablissementController::class, 'destroy'])->name('superadmin.etablissement.destroy');
 
+Route::get('/listeformation', [FormationController::class, 'index'])->name('superadmin.formation.index');
+Route::get('/formation/create', [FormationController::class, 'create'])->name('superadmin.formation.create');
+Route::post('/formation', [FormationController::class, 'store'])->name('superadmin.formation.store');
+Route::get('/formation/{id}/edit', [FormationController::class, 'edit'])->name('superadmin.formation.edit');
+Route::put('/formation/{id}', [FormationController::class, 'update'])->name('superadmin.formation.update');
+Route::delete('/formation/{id}', [FormationController::class, 'destroy'])->name('superadmin.formation.destroy');
+Route::get('/liaison', [FormationController::class,'liaison'])->name('superadmin.formation.liaison');
+Route::delete('/liaison/{formation}/{etablissement}', [FormationController::class,'detach'])->name('superadmin.formation.detach');
+
 // route gestion des enquetes 
     Route::prefix('enquete')->name('superadmin.enquete.')->group(function () {
         // route afficher les enquetes
@@ -63,14 +72,6 @@ Route::delete('/etablissement/{id}', [EtablissementController::class, 'destroy']
             // route suppression d'enquete
             Route::delete('supprimer/{id}', [EnqueteController::class, 'destroy'])
             -> where('id', '[0-9]+')->name('delete')->middleware(['auth', 'is_admin', 'is_super_admin']); 
-Route::get('/listeformation', [FormationController::class, 'index'])->name('superadmin.formation.index');
-Route::get('/formation/create', [FormationController::class, 'create'])->name('superadmin.formation.create');
-Route::post('/formation', [FormationController::class, 'store'])->name('superadmin.formation.store');
-Route::get('/formation/{id}/edit', [FormationController::class, 'edit'])->name('superadmin.formation.edit');
-Route::put('/formation/{id}', [FormationController::class, 'update'])->name('superadmin.formation.update');
-Route::delete('/formation/{id}', [FormationController::class, 'destroy'])->name('superadmin.formation.destroy');
-Route::get('/liaison', [FormationController::class,'liaison'])->name('superadmin.formation.liaison');
-Route::delete('/liaison/{formation}/{etablissement}', [FormationController::class,'detach'])->name('superadmin.formation.detach');
 
             // route pour modifier, 1 pour afficher les données dans le formulaire et l'autre pour les modifier. 
             Route::get('modifier/{id}', [EnqueteController::class, 'edit'])
