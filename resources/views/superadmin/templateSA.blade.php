@@ -21,7 +21,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('/') }}sbadmin2/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="{{ asset('/') }}sbadmin2/css/sbadminTemplate.css" rel="stylesheet">
-    {{-- @vite('resources/css/styles.css') --}}
+    @vite('resources/css/styles.css')
     
 
     {{-- envoie des styles --}}
