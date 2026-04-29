@@ -28,7 +28,7 @@ class UserFactory extends Factory
        return [
             'prenom' => fake()->firstName(),
             'nom' => fake()->lastName(),
-            'type_user' => fake()->randomElement(['user', 'admin', 'superadmin']),
+            'type_user' => fake()->randomElement(['salarié', 'administrateur', 'super_administrateur']),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
@@ -52,7 +52,7 @@ class UserFactory extends Factory
     public function admin(): static
     {
         return $this->state(fn (array $attributes) => [
-            'type_user' => 'admin',
+            'type_user' => 'administrateur',
         ]);
     }
 
@@ -62,7 +62,7 @@ class UserFactory extends Factory
     public function superAdmin(): static
     {
         return $this->state(fn (array $attributes) => [
-            'type_user' => 'superadmin',
+            'type_user' => 'super_administrateur',
         ]);
     }
 
