@@ -49,7 +49,13 @@
                                         </a>
                                     </div>
 
-                                    
+                                    @if (Route::has('register'))
+                                        <div class="mb-3">
+                                            <a href="{{ route('register') }}" class="btn btn-outline-primary btn-user btn-block">
+                                                <i class="fas fa-user-plus mr-2"></i> Créer un compte
+                                            </a>
+                                        </div>
+                                    @endif
 
                                     <p class="text-center text-muted small mb-0">
                                         Besoin d’aide ? Contactez l’administrateur de la plateforme.
