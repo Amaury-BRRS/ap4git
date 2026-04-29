@@ -6,6 +6,7 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\EtablissementController;
 use App\Http\Controllers\EchangeController;
 use App\Http\Controllers\FormationController;
+use App\Http\Controllers\EnqueteController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -60,6 +61,33 @@ Route::put('/formation/{id}', [FormationController::class, 'update'])->name('sup
 Route::delete('/formation/{id}', [FormationController::class, 'destroy'])->name('superadmin.formation.destroy');
 Route::get('/liaison', [FormationController::class,'liaison'])->name('superadmin.formation.liaison');
 Route::delete('/liaison/{formation}/{etablissement}', [FormationController::class,'detach'])->name('superadmin.formation.detach');
+
+// route gestion des enquetes 
+    Route::prefix('enquete')->name('superadmin.enquete.')->group(function () {
+        // route afficher les enquetes
+        // la route se construit comme ça => va chercher la methode listeEnquete de la classe EnqueteController dans le controller Enquete 
+        Route::get('lister',[EnqueteController::class,'index'])
+            -> name('index');
+            
+            // route suppression d'enquete
+            Route::delete('supprimer/{id}', [EnqueteController::class, 'destroy'])
+            -> where('id', '[0-9]+')->name('delete')->middleware(['auth', 'is_admin', 'is_super_admin']); 
+
+            // route pour modifier, 1 pour afficher les données dans le formulaire et l'autre pour les modifier. 
+            Route::get('modifier/{id}', [EnqueteController::class, 'edit'])
+            -> name('edit')->middleware(['auth', 'is_admin', 'is_super_admin']); 
+
+            Route::put('update/{id}', [EnqueteController::class, 'update']) 
+            -> name('update')->middleware(['auth', 'is_admin', 'is_super_admin']); 
+
+            // route pour l'ajout, la première pour afficher les données et la deuxieme pour les modifier 
+            Route::get('ajouter', [EnqueteController::class,'create'])
+            -> name('create')->middleware(['auth', 'is_admin', 'is_super_admin']); 
+
+            Route::post('store',[EnqueteController::class,'store']) 
+            -> name('store')->middleware(['auth', 'is_admin', 'is_super_admin']); 
+
+    }); 
 
 // routes echanges
 Route::middleware('auth')->group(function () {

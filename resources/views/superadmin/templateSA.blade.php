@@ -78,8 +78,18 @@
                     <span>Voir les liaison</span>
                 </a>
             </li>
+
+            {{-- lien vers gestion des enquetes --}}
+            <li class="nav-item active">
+                <a class="nav-link" href={{ route('superadmin.enquete.index') }}>
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Gérer les enquêtes</span>
+                </a>
+            </li>
  
             <hr class="sidebar-divider d-none d-md-block">            
+ 
+            <hr class="sidebar-divider d-none d-md-block">
  
             <li class="nav-item active">
                 <a class="nav-link" href="#">
