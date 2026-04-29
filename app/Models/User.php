@@ -49,7 +49,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Vérifier si l'utilisateur est un administrateur
+     * Vérifier si l'utilisateur est un admin
      */
     public function isAdmin(): bool
     {
@@ -57,19 +57,19 @@ class User extends Authenticatable
     }
 
     /**
-     * Vérifier si l'utilisateur est un super administrateur
+     * Vérifier si l'utilisateur est un super admin
      */
     public function isSuperAdmin(): bool
     {
-        return $this->type_user === 'super_administrateur';
+        return $this->type_user === 'superadmin';
     }
 
     /**
-     * Vérifier si l'utilisateur est un salarié
+     * Vérifier si l'utilisateur est un utilisateur normal
      */
     public function isUser(): bool
     {
-        return $this->type_user === 'salarié';
+        return $this->type_user === 'user';
     }
 
     public function echanges()
