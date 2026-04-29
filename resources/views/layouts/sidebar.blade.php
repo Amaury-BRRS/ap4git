@@ -24,7 +24,7 @@
 
 
 
-            @if (auth()->user()->isAdmin() || auth()->user()->isSuperAdmin())
+            @if(auth()->user() && (auth()->user()->user_type === 'super_administrateur' ))
             <!-- Heading -->
             <div class="sidebar-heading">
                 Interface
@@ -41,7 +41,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Les utilisateurs :</h6>
                         
-                        @if (auth()->user()->isSuperAdmin())
+                        @if (auth()->user() && (auth()->user()->user_type === 'super_administrateur' ))
                             <a class="collapse-item" href="{{ route('liste_utilisateurs.user') }}">Liste des users</a>
                             <a class="collapse-item" href="{{ route('liste_utilisateurs.admin') }}">Liste des admin</a>
                             <a class="collapse-item" href="{{ route('liste_utilisateurs.super_admin') }}">Liste des super admin</a>
@@ -55,7 +55,7 @@
             @endif
 
             <!-- Nav Item - Utilities Collapse Menu -->
-                @if (auth()->user()->isAdmin() || auth()->user()->isSuperAdmin())
+                @if(auth()->user() && (auth()->user()->user_type === 'super_administrateur' ))
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEnquetes"
                     aria-expanded="true" aria-controls="collapseEnquetes">
@@ -71,7 +71,7 @@
             </li>
              @endif
 
-              @if (auth()->user()->isAdmin() || auth()->user()->isSuperAdmin())
+              @if(auth()->user() && (auth()->user()->user_type === 'super_administrateur' ))
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEchanges"
                     aria-expanded="true" aria-controls="collapseEchanges">
