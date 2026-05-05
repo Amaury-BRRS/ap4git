@@ -66,8 +66,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Les enquêtes :</h6>
-                        <a class="collapse-item" href="enquete_en_cours">enquete en cours</a>
-                        <a class="collapse-item" href="enquetes_terminées">enquetes terminées</a>
+                        <a class="collapse-item" href="{{ route('superadmin.enquete.index') }}">Gérer les enquêtes</a>
+                        {{-- <a class="collapse-item" href="">Gérer les enquêtes</a> --}}
             </li>
              @endif
 

@@ -44,4 +44,9 @@ class Enquete extends Model
         'date_fin', 
         'statut', 
     ];
+
+    protected $casts = [
+    'date_debut' => 'date',
+    'date_fin'   => 'date',
+];
 }

@@ -1,11 +1,6 @@
-@extends('superadmin.templateSA')
+@extends('template')
 @section('content')
 
-{{-- @if(Auth::user()) --}}
-<a href="{{ route('superadmin.enquete.create') }}" class="btn btn-outline-success" role="button">
-    Ajouter une enquête
-</a>
-{{-- @endif  --}}
 <table class="table">
   <thead>
     <tr> 
@@ -28,10 +23,20 @@
     <tr>
         <td>{{$e->titre}}</td>
         <td>{{$e->description}}</td>
-        <td>{{$e->public_cible}}</td>
-        <td>{{$e->date_debut}}</td>
-        <td>{{$e->date_fin}}</td>
-        <td>{{$e->user->nom ?? 'Non défini'}}</td>
+        <td>
+            @if($e->public_cible == 1)
+                Ancien Professeur
+            @elseif($e->public_cible == 2)
+                Ancien Tuteur
+            @elseif($e->public_cible == 3)
+                Ancien Apprenti
+            @else
+                Non défini
+            @endif
+        </td>         
+       <td>{{ $e->date_debut->format('d/m/Y') }}</td>
+       <td>{{ $e->date_fin->format('d/m/Y') }}</td>
+       <td>{{$e->user->email ?? 'Non défini'}}</td>
 
         @if(Auth::user() && Auth::user()->user_type === 'super_administrateur')
         <td>
@@ -57,6 +62,14 @@
         <tr><td colspan="3">pas de données</td></tr>
     @endforelse
     </tr>
+
   </tbody>
 </table>
+
+@if(Auth::user() && Auth::user()->user_type === 'super_administrateur')
+    <a href="{{ route('superadmin.enquete.create') }}" class="btn btn-outline-success" role="button">
+    Ajouter une enquête 
+</a>
+@endif 
+
 @endsection
